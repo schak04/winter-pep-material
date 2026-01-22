@@ -1,0 +1,20 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+#container {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: bisque;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#container > p {
+  font-size: 24px;
+}
+.btn {
+  font-size: 20px;
+}

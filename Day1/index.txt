@@ -1,0 +1,769 @@
+📚 RESOURCE LINKS
+═════════════════════════════════════════════════════════════
+Class 1 (HTML): https://vivmagarwal.notion.site/Class-1-Introduction-to-HTML-5ef32d14055443098ded0f611d2a0315
+Class 3 (CSS): https://vivmagarwal.notion.site/Class-3-Introduction-to-CSS-c9415090df9d4115a29d20d7d59bf24a
+
+
+═════════════════════════════════════════════════════════════
+WEB INTRODUCTION – STUDENT GUIDE
+═════════════════════════════════════════════════════════════
+
+📌 SECTION 1: WHAT IS WEB DEVELOPMENT?
+─────────────────────────────────────────────────────────────
+What is Web Development?
+Web development is the process of creating websites and web applications that people can use. Instead of installing software on your computer, you simply access websites through the internet using a web browser!
+
+Key Characteristics:
+
+✓ Websites run inside a web browser
+  - Chrome, Firefox, Safari, Edge, etc.
+  - No installation needed!
+
+✓ Accessed using the internet
+  - Type URL (web address) in browser
+  - Browser fetches website from a server
+
+✓ Works on different devices
+  - Desktop computers
+  - Tablets and smartphones
+  - Any device with a browser
+
+✓ Made of multiple files
+  - HTML files (structure)
+  - CSS files (styling)
+  - JavaScript files (behavior)
+  - Images, videos, and other assets
+  - These files are stored on a SERVER
+
+
+📌 SECTION 2: FRONTEND vs BACKEND – The Two Sides of Web Development
+─────────────────────────────────────────────────────────────
+Web development is divided into TWO parts:
+
+FRONTEND (Client-Side)
+  What is it?
+  - The visible part of the website that YOU see
+  - Everything happening inside your browser
+  
+  Examples:
+  - Text, images, buttons you click on
+  - Colors, fonts, layout design
+  - Forms that respond to your clicks
+  - Animations and interactive features
+
+BACKEND (Server-Side)
+  What is it?
+  - Works behind the scenes
+  - Runs on a server (a powerful computer somewhere)
+  - You don't see it directly
+  
+  Examples:
+  - Storing user data in databases
+  - Processing form submissions
+  - User authentication (login/signup)
+  - Complex calculations
+
+How They Work Together:
+  Frontend and Backend communicate with each other to create complete websites
+
+Visual Example:
+  User (You) ←→ Frontend (Browser) ←→ Backend (Server)
+                   [What you see]      [Behind the scenes]
+
+
+📌 SECTION 3: THE CLIENT-SERVER MODEL
+─────────────────────────────────────────────────────────────
+What is the Client-Server Model?
+The Client-Server Model describes how websites work on the internet.
+
+Key Terms:
+
+1. CLIENT
+   - Your web browser (Chrome, Firefox, etc.)
+   - Also called the "user's side"
+
+2. SERVER
+   - A computer that stores website files and data
+   - Available 24/7 on the internet
+   - Responds to requests from clients
+
+How It Works (Step by Step):
+
+Step 1: Client Sends Request
+  → You type a URL or click a link
+  → Your browser sends a REQUEST to the server
+  Example: "Hey server, give me the Google homepage!"
+
+Step 2: Server Processes Request
+  → Server receives your request
+  → Server finds the requested files
+
+Step 3: Server Sends Response
+  → Server sends back a RESPONSE
+  → Response contains: HTML files, CSS files, images, etc.
+
+Step 4: Browser Displays Website
+  → Browser receives the files
+  → Browser displays the final website
+  → You see the webpage!
+
+Simple Diagram:
+  ┌────────────────┐
+  │    CLIENT      │
+  │  (Your Browser)│
+  └───────┬────────┘
+          │ 1. Request
+          │ (I want webpage X)
+          ↓
+  ┌────────────────┐
+  │    SERVER      │
+  │ (Web Server)   │
+  └───────┬────────┘
+          │ 2. Response
+          │ (Here are the files)
+          ↓
+  ┌────────────────┐
+  │  Webpage loads │
+  │   in browser   │
+  └────────────────┘
+
+
+📌 SECTION 4: THE THREE BUILDING BLOCKS OF WEB DEVELOPMENT
+─────────────────────────────────────────────────────────────
+Every modern website uses these three technologies:
+
+1. HTML – Structure (The Skeleton)
+   What it does:
+   - Defines the CONTENT and LAYOUT of a webpage
+   - Creates the structure (like a skeleton for your page)
+   - Organizes information in a meaningful way
+   
+   Example:
+   - Paragraphs, headings, lists
+   - Where the image goes
+   - Where buttons are placed
+   
+   Without HTML: Page has no structure, just raw content
+
+2. CSS – Styling (The Appearance)
+   What it does:
+   - Controls the DESIGN of the webpage
+   - Makes websites look beautiful
+   - Handles colors, fonts, spacing, layout
+   
+   Example:
+   - Text color and size
+   - Background colors
+   - Button styling
+   - Responsive design (adapts to screen size)
+   
+   Without CSS: Page looks plain and ugly, no colors
+
+3. JavaScript – Behavior (The Interactivity)
+   What it does:
+   - Adds INTERACTION and BEHAVIOR to websites
+   - Makes pages respond to user actions
+   - Handles animations and dynamic content
+   
+   Example:
+   - Click button → Something happens
+   - Form validation (checks if input is correct)
+   - Auto-updating content (like live chat)
+   - Interactive games
+   
+   Without JavaScript: Page is static, no interactions
+
+
+Visual Summary:
+  ┌─────────────────────────────────────────────┐
+  │           WHAT BROWSER DOES                 │
+  ├─────────────────────────────────────────────┤
+  │ 1. Reads HTML file                          │
+  │    ↓ (Loads structure)                      │
+  │ 2. Applies CSS styles                       │
+  │    ↓ (Adds colors, fonts, layout)           │
+  │ 3. Executes JavaScript                      │
+  │    ↓ (Adds interactivity)                   │
+  │ 4. Displays final website                   │
+  │    ↓ (What YOU see!)                        │
+  └─────────────────────────────────────────────┘
+
+
+📌 SECTION 5: DEVELOPER TOOLS (DevTools) – Inspect Websites!
+─────────────────────────────────────────────────────────────
+What are Developer Tools?
+Developer Tools (or DevTools) are built into your browser and help you inspect how websites work. It's like looking under the hood of a car!
+
+How to Open DevTools:
+  → Right-click on any webpage
+  → Select "Inspect" or "Inspect Element"
+  OR Press: F12 (Windows/Linux) or Cmd+Option+I (Mac)
+
+What You Can See:
+
+1. HTML STRUCTURE
+   - Complete HTML code of the page
+   - How elements are organized
+   - Tag relationships (parent-child)
+
+2. CSS STYLES
+   - All CSS rules applied to elements
+   - Colors, fonts, sizes, spacing
+   - Which CSS file applies which style
+
+3. LOADED FILES
+   - All files downloaded for the page
+   - Images, scripts, stylesheets
+   - File sizes and load times
+
+4. CONSOLE
+   - Error messages
+   - JavaScript output
+   - Useful for debugging
+
+Why Learn DevTools?
+✓ Understand how other websites work
+✓ Debug your own code
+✓ Learn CSS and HTML by examining real websites
+✓ Test changes without editing files
+
+
+═════════════════════════════════════════════════════════════
+HTML FUNDAMENTALS – STUDENT GUIDE
+═════════════════════════════════════════════════════════════
+
+📌 SECTION 6: WHAT IS HTML?
+─────────────────────────────────────────────────────────────
+HTML stands for HyperText Markup Language
+
+Breaking it down:
+- HyperText: Text with links (that's what makes web "web")
+- Markup: We "mark up" content with tags
+- Language: A system of communication
+
+What is HTML used for?
+HTML is used to create the STRUCTURE and LAYOUT of webpages. It organizes content so browsers and people can understand what each element is.
+
+Key Facts:
+✓ HTML files have the extension: .html
+  Examples: index.html, about.html, contact.html
+
+✓ HTML is made of ELEMENTS and TAGS
+  → Tags tell browser what each piece of content is
+  Example: <p>This is a paragraph</p>
+  
+  → Elements = Opening tag + Content + Closing tag
+  <p>              </p>    ← Tags
+     This is text   ← Content
+
+
+📌 SECTION 7: HTML DOCUMENT STRUCTURE
+─────────────────────────────────────────────────────────────
+Every HTML page has a basic structure. Here's the template:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Metadata goes here -->
+    <title>Page Title</title>
+  </head>
+  <body>
+    <!-- Visible content goes here -->
+    <h1>Hello World!</h1>
+  </body>
+</html>
+```
+
+Let's understand each part:
+
+1. <!DOCTYPE html>
+   - Tells browser this is an HTML5 document
+   - Must be the first line
+   - Defines HTML version
+   - Without it, browser may behave unexpectedly
+
+2. <html> tag
+   - Root element of the entire page
+   - Everything goes inside this tag
+   - Wraps the entire document
+
+3. <head> section
+   - Contains METADATA (information about the page)
+   - NOT visible on the webpage
+   - Important for browsers and search engines
+   
+   What goes in <head>:
+   - <title>: Page title (shown in browser tab)
+   - <meta>: Character encoding, viewport, etc.
+   - <link>: CSS files, fonts
+   - <script>: JavaScript files
+
+4. <body> section
+   - Contains all VISIBLE content
+   - Everything the user sees on the page
+   - Headings, paragraphs, images, buttons, etc.
+
+
+📌 SECTION 8: SEMANTIC HTML TAGS – Meaningful Content
+─────────────────────────────────────────────────────────────
+What are Semantic Tags?
+Semantic tags describe the MEANING of the content they contain. They tell both browsers and developers what role each section plays.
+
+Why Use Semantic HTML?
+→ Improves readability (easier to understand code)
+→ Improves accessibility (screen readers understand better)
+→ Better for SEO (search engines rank better)
+→ Modern best practice (preferred over <div> everywhere)
+
+Common Semantic Tags:
+
+1. <header>
+   Represents the top section of a page
+   Usually contains: logo, navigation, company name
+   ```html
+   <header>
+     <h1>My Website</h1>
+     <p>Welcome to my site!</p>
+   </header>
+   ```
+
+2. <nav>
+   Represents navigation links
+   Contains links to different pages
+   ```html
+   <nav>
+     <a href="#home">Home</a>
+     <a href="#about">About</a>
+     <a href="#contact">Contact</a>
+   </nav>
+   ```
+
+3. <section>
+   Groups related content together
+   Represents a thematic grouping
+   ```html
+   <section>
+     <h2>Features</h2>
+     <p>Our amazing features...</p>
+   </section>
+   ```
+
+4. <article>
+   Represents independent, self-contained content
+   Example: Blog posts, news articles, reviews
+   ```html
+   <article>
+     <h2>How to Learn HTML</h2>
+     <p>HTML is easy to learn...</p>
+   </article>
+   ```
+
+5. <footer>
+   Represents the bottom section of a page
+   Usually contains: copyright, links, contact info
+   ```html
+   <footer>
+     <p>&copy; 2025 My Website. All rights reserved.</p>
+   </footer>
+   ```
+
+Example Page Structure:
+  ┌──────────────────────┐
+  │    <header>          │ Top of page
+  │  Logo & Navigation   │
+  └──────────────────────┘
+  ┌──────────────────────┐
+  │     <nav>            │ Navigation menu
+  └──────────────────────┘
+  ┌──────────────────────┐
+  │   <section>          │ Main content areas
+  │   <section>          │
+  │   <article>          │
+  └──────────────────────┘
+  ┌──────────────────────┐
+  │    <footer>          │ Bottom of page
+  │  Copyright, Links    │
+  └──────────────────────┘
+
+⚠️ Old Way (Don't Use):
+Before semantic tags, developers used <div> for everything
+```html
+<div>Header stuff</div>
+<div>Navigation</div>
+<div>Content</div>
+<div>Footer</div>
+```
+This doesn't tell us what each <div> means!
+
+
+📌 SECTION 9: TEXT CONTENT IN HTML
+─────────────────────────────────────────────────────────────
+
+1. HEADINGS – <h1> to <h6>
+   Used to create headings and subheadings
+   Hierarchy: h1 (largest) to h6 (smallest)
+   
+   ```html
+   <h1>Main Heading (Page Title)</h1>
+   <h2>Subheading</h2>
+   <h3>Sub-subheading</h3>
+   ```
+   
+   Best Practices:
+   - Use only ONE <h1> per page
+   - Use headings in order (don't skip h3 after h1)
+   - Important for SEO and screen readers
+
+2. PARAGRAPHS – <p>
+   Used for blocks of text
+   Browser adds space before and after
+   
+   ```html
+   <p>This is a paragraph of text. It's the most common way to display text content.</p>
+   <p>Each <p> tag is a separate paragraph.</p>
+   ```
+
+3. LINKS – <a>
+   Creates clickable links to other pages
+   Uses href attribute for the URL
+   
+   ```html
+   <a href="https://google.com">Click here for Google</a>
+   <a href="about.html">Go to About page</a>
+   ```
+   
+   Different link types:
+   - Absolute links: Full URL (https://...)
+   - Relative links: Same website (about.html)
+   - Anchor links: Same page (#section-name)
+
+4. IMAGES – <img>
+   Embeds images in the webpage
+   Self-closing tag (no closing tag needed)
+   
+   ```html
+   <img src="photo.jpg" alt="A beautiful sunset">
+   ```
+   
+   Important attributes:
+   - src: Location of image file
+   - alt: Description (important for accessibility!)
+
+
+📌 SECTION 10: TABLES – DISPLAYING DATA
+─────────────────────────────────────────────────────────────
+What are Tables?
+Tables are used to display tabular data (rows and columns) in an organized way.
+
+Table Tags:
+
+- <table>: Container for entire table
+- <tr>: Table Row (horizontal line)
+- <td>: Table Data (single cell)
+- <th>: Table Header (header cell, bold)
+
+Example:
+```html
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>City</th>
+  </tr>
+  <tr>
+    <td>Alice</td>
+    <td>25</td>
+    <td>New York</td>
+  </tr>
+  <tr>
+    <td>Bob</td>
+    <td>30</td>
+    <td>Los Angeles</td>
+  </tr>
+</table>
+```
+
+Renders as:
+┌───────┬─────┬──────────────┐
+│ Name  │ Age │ City         │
+├───────┼─────┼──────────────┤
+│ Alice │ 25  │ New York     │
+├───────┼─────┼──────────────┤
+│ Bob   │ 30  │ Los Angeles  │
+└───────┴─────┴──────────────┘
+
+When to Use Tables:
+✓ Displaying structured data
+✓ Price lists, schedules, comparison charts
+✓ NOT for layout (use CSS/Flexbox instead)
+
+
+═════════════════════════════════════════════════════════════
+HTML FORMS – STUDENT GUIDE
+═════════════════════════════════════════════════════════════
+
+📌 SECTION 11: WHAT ARE HTML FORMS?
+─────────────────────────────────────────────────────────────
+What are Forms?
+Forms are used to COLLECT USER INPUT. They let visitors enter information like names, emails, passwords, preferences, etc.
+
+Common Uses:
+✓ Contact forms (collect messages)
+✓ Login pages (username & password)
+✓ Sign-up forms (create accounts)
+✓ Search boxes
+✓ Surveys and questionnaires
+✓ Shopping (address, payment info)
+
+Form Example:
+When you visit a contact page and fill out "Name", "Email", "Message" — that's a form!
+
+
+📌 SECTION 12: FORM STRUCTURE & INPUT TYPES
+─────────────────────────────────────────────────────────────
+Basic Form Structure:
+
+```html
+<form>
+  <label>Name:</label>
+  <input type="text">
+  
+  <label>Email:</label>
+  <input type="email">
+  
+  <button type="submit">Send</button>
+</form>
+```
+
+Key Form Tags:
+
+1. <form>
+   - Container for all form elements
+   - Attributes:
+     • action: Where to send form data (backend URL)
+     • method: GET or POST (explained below)
+
+2. <input>
+   - Receives user input
+   - Self-closing tag
+   - type attribute determines what kind of input
+
+3. <label>
+   - Describes what each input field is for
+   - Improves accessibility
+   - Linked to input using "for" attribute
+
+
+📌 SECTION 13: INPUT TYPES – Collecting Different Data
+─────────────────────────────────────────────────────────────
+Different <input> types for different data:
+
+1. TEXT INPUT – type="text"
+   Used for: Names, usernames, addresses
+   ```html
+   <label for="username">Username:</label>
+   <input type="text" id="username" placeholder="Enter username">
+   ```
+
+2. EMAIL INPUT – type="email"
+   Used for: Email addresses
+   Browser automatically validates email format
+   ```html
+   <label for="email">Email:</label>
+   <input type="email" id="email">
+   ```
+
+3. PASSWORD INPUT – type="password"
+   Used for: Passwords
+   Hides typed characters (shows dots instead)
+   ```html
+   <label for="password">Password:</label>
+   <input type="password" id="password">
+   ```
+
+4. RADIO BUTTONS – type="radio"
+   Used for: Single selection (pick ONE option)
+   All related radios share the same "name"
+   ```html
+   <label>
+     <input type="radio" name="gender"> Male
+   </label>
+   <label>
+     <input type="radio" name="gender"> Female
+   </label>
+   <label>
+     <input type="radio" name="gender"> Other
+   </label>
+   ```
+   Note: Selecting one automatically deselects others
+
+5. CHECKBOXES – type="checkbox"
+   Used for: Multiple selections (pick ANY/ALL options)
+   ```html
+   <label>
+     <input type="checkbox"> I agree to terms
+   </label>
+   <label>
+     <input type="checkbox"> Subscribe to newsletter
+   </label>
+   ```
+   Note: You can select multiple checkboxes
+
+6. SUBMIT BUTTON – type="submit"
+   Used for: Submitting the form
+   ```html
+   <button type="submit">Submit Form</button>
+   ```
+   When clicked: Sends form data to the server
+
+
+📌 SECTION 14: FORM ATTRIBUTES – Making Forms Better
+─────────────────────────────────────────────────────────────
+
+1. PLACEHOLDER
+   - Gives hint text inside the input
+   - Disappears when user types
+   - Improves user experience
+   ```html
+   <input type="text" placeholder="e.g., John Smith">
+   ```
+
+2. REQUIRED
+   - Makes field mandatory
+   - Form won't submit if field is empty
+   - Browser shows error message
+   ```html
+   <input type="email" required>
+   ```
+   User sees: "Please fill out this field"
+
+3. FOR ATTRIBUTE (Labels)
+   - Connects label to input field
+   - Clicking label focuses the input
+   - Essential for accessibility
+   ```html
+   <label for="email">Email:</label>
+   <input type="email" id="email">
+   
+   ← "for" in label matches "id" in input
+   ```
+
+4. NAME ATTRIBUTE
+   - Identifies the field when form is submitted
+   - Data sent as: name=value
+   ```html
+   <input type="text" name="fullname">
+   
+   When submitted sends: fullname=John Smith
+   ```
+
+
+📌 SECTION 15: FORM SUBMISSION – GET vs POST
+─────────────────────────────────────────────────────────────
+How are forms submitted?
+
+```html
+<form action="/submit" method="POST">
+  <!-- form fields here -->
+</form>
+```
+
+The METHOD attribute determines HOW data is sent:
+
+1. GET METHOD
+   ```html
+   <form method="GET" action="/search">
+   ```
+   
+   How it works:
+   - Sends data in the URL
+   - Example: www.site.com/search?name=John&age=25
+   - Data visible in address bar
+   
+   When to use:
+   ✓ Non-sensitive queries (search, filtering)
+   ✓ Small amounts of data
+   ✓ Bookmarkable requests
+   
+   Disadvantages:
+   ✗ Data visible to anyone looking at screen
+   ✗ Limited data size
+   ✗ Not secure for passwords
+
+2. POST METHOD
+   ```html
+   <form method="POST" action="/login">
+   ```
+   
+   How it works:
+   - Sends data in the request body
+   - Data NOT visible in URL
+   - Hidden from casual observation
+   
+   When to use:
+   ✓ Sensitive data (passwords, credit cards)
+   ✓ Large amounts of data
+   ✓ Permanent changes (creating accounts)
+   ✓ Private information
+   
+   Advantages:
+   ✓ More secure
+   ✓ No limit on data size
+   ✓ Data not shown in URL
+
+Quick Comparison:
+┌──────────────┬──────────────────┬──────────────────┐
+│ Feature      │ GET              │ POST             │
+├──────────────┼──────────────────┼──────────────────┤
+│ Data visible │ In URL (unsafe)  │ Hidden (safe)    │
+│ Data size    │ Limited (2000ch) │ Unlimited        │
+│ Use case     │ Search, filter   │ Login, signup    │
+│ Bookmarkable │ Yes              │ No               │
+└──────────────┴──────────────────┴──────────────────┘
+
+
+📌 SECTION 16: COMPLETE FORM EXAMPLE
+─────────────────────────────────────────────────────────────
+Full Contact Form Example:
+
+```html
+<form action="/submit-contact" method="POST">
+  
+  <label for="name">Full Name:</label>
+  <input type="text" id="name" name="name" required placeholder="John Smith">
+  
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" name="email" required>
+  
+  <label for="phone">Phone Number:</label>
+  <input type="text" id="phone" name="phone" placeholder="123-456-7890">
+  
+  <label>How did you hear about us?</label>
+  <label>
+    <input type="radio" name="source"> Google Search
+  </label>
+  <label>
+    <input type="radio" name="source"> Social Media
+  </label>
+  <label>
+    <input type="radio" name="source"> Friend Referral
+  </label>
+  
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
+  
+  <label>
+    <input type="checkbox" name="agree" required> I agree to the terms and conditions
+  </label>
+  
+  <button type="submit">Send Message</button>
+</form>
+```
+
+What Happens When User Submits:
+→ Browser validates required fields
+→ If valid, sends data to action URL using method
+→ Backend processes the form data
+→ User typically sees confirmation message
+

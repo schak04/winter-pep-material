@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar with Hamburger Menu</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Navigation Bar */
+      nav {
+        background-color: #333;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      /* Menu */
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        color: #4caf50;
+      }
+
+      /* Hamburger Menu Icon */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+
+      /* CSS-only hamburger toggle */
+      #menu-toggle:checked + .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      #menu-toggle:checked + .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+
+      #menu-toggle:checked + .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      #menu-toggle:checked ~ .nav-menu {
+        max-height: 500px;
+        padding: 20px 0;
+      }
+
+      /* Mobile View - Screens smaller than 768px */
+      @media (max-width: 768px) {
+        /* Show hamburger icon */
+        .hamburger {
+          display: flex;
+        }
+
+        /* Hide regular menu by default */
+        .nav-menu {
+          max-height: 0;
+          overflow: hidden;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          flex-direction: column;
+          background-color: #333;
+          gap: 0;
+          padding: 0;
+          transition: max-height 0.3s ease-in-out;
+        }
+
+        .nav-menu a {
+          padding: 12px 20px;
+          border-bottom: 1px solid #555;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">MyLogo</div>
+
+      <!-- Regular Menu (Desktop) -->
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger Menu Icon (Mobile) -->
+      <input type="checkbox" id="menu-toggle" style="display: none" />
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </nav>
+  </body>
+</html>

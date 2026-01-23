@@ -256,6 +256,31 @@ body {
     color: white;
 }
 
+/* Media Query - 2 Columns for screens < 768px */
+@media (max-width: 767px) {
+    .projects {
+        gap: 15px;
+    }
+    
+    .project {
+        flex: 0 0 calc(50% - 7.5px);
+        min-width: auto;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .skills-list {
+        flex-wrap: wrap;
+    }
+}
+
     border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;

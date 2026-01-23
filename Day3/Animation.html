@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        margin: 200px 300px 250px 250px;
+        background-color: cadetblue;
+        animation: slide-in 2s infinite;
+      }
+      @keyframes slide-in {
+        0% {
+          transform: translateX(0px);
+        }
+
+        50% {
+          transform: translateX(400px);
+        }
+        100% {
+          transform: translate(400px, 200px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <!-- <div class="box1"></div> -->
+    </div>
+  </body>
+</html>

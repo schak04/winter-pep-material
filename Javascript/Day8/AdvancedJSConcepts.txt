@@ -1,0 +1,220 @@
+1.Scope in JavaScript
+
+//Scope = Area where a variable can be accessed.
+//It decides:
+Where a variable is visible
+Where it can be used
+
+2.Types of Scope in JavaScript
+(a)Global Scope
+(b)Function Scope
+(c)Block Scope (let & const)
+
+(a)Global Scope:-
+//Declared outside any function/block
+  Accessible everywhere
+
+ Ex:- let a = 10;
+function show() {
+  console.log(a);
+}
+show();
+
+(b)Function Scope:-
+ //Declared inside a function
+ Accessible only inside that function
+
+ Ex:-function test() {
+  let b = 20;
+  console.log(b);
+}
+test();
+
+(c)Block Scope (let & const):-
+  //Applies to let and const
+   
+   Ex:-if(true){
+  let x = 5;
+  const y = 10;
+}
+
+
+Ex:-for (let i = 1; i <= 3; i++) {
+  console.log(i);
+}
+console.log(i); // Error
+
+Note:-var has two possible scopes:
+1️⃣ Global Scope
+2️⃣ Function Scope
+
+//var does NOT have block scope.
+Ex:-var x = 10;
+
+function test() {
+  console.log(x);
+}
+
+test();        // 10
+console.log(x); // 10
+
+Ex:-
+for (let i = 0; i < 3; i++) {
+    var x = i;
+    console.log(x);
+  }
+  console.log(x);
+
+  //IMP:-Scope Chain---->
+
+//When JS cannot find a variable in current scope,
+it searches in outer scopes.
+This process is called Scope Chain.
+
+Order:-Block Scope
+   ↓
+Function Scope
+   ↓
+Global Scope
+   ↓
+Not Found → ReferenceError
+----------------------------------------------------------------------------------------------
+
+Ex:-let a = "Global";
+
+function test() {
+  let b = "Function";
+
+  if (true) {
+    let c = "Block";
+
+    console.log(c); // Block
+    console.log(b); // Function
+    console.log(a); // Global
+  }
+}
+test();
+
+Ex:-
+function demo() {
+  if (true) {
+    let x = 10;
+    console.log(y); // Error
+  }
+}
+
+demo();
+
+Activity:-
+
+Ex:-let num = 100;
+
+function show() {
+  let num = 50;
+
+  if (true) {
+    let num = 10;
+    console.log(num);
+  }
+}
+show();
+
+ Class Activity:-
+
+  1.function test() {
+  var x = 10;
+  console.log(x);
+}
+
+test();
+console.log(x);
+Q.What will be the output? Why?
+
+
+2. function demo() {
+  let y = 20;
+}
+
+demo();
+console.log(y);
+q.Will this run successfully? 
+
+
+3.var a = 5;
+
+function show() {
+  var a = 10;
+  console.log(a);
+}
+
+show();
+console.log(a);
+Q.Find the output and reason.
+
+
+4.if (true) {
+  let x = 10;
+}
+
+console.log(x);
+Q.What happens when this code runs?
+
+5.for (let i = 0; i < 2; i++) {
+  console.log(i);
+}
+
+console.log(i);
+Q.Predict the output.
+
+6.if (true) {
+  const a = 5;
+  a = 10;
+}
+
+console.log(a);
+Q.Identify the error and explain.
+
+7. let a = 10;
+
+function test() {
+  console.log(a);
+}
+
+test();
+Q.From where is a accessed?
+
+8. function demo() {
+  let x = 5;
+
+  function show() {
+    console.log(x);
+  }
+
+  show();
+}
+demo();
+Q.Why does this work?
+
+
+9.let num = 100;
+
+function outer() {
+  let num = 50;
+
+  function inner() {
+    console.log(num);
+  }
+
+  inner();
+}
+
+outer();
+Q.Which num is used and why?
+
+
+
+
+
+
+
+

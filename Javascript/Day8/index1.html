@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button onclick="GenerateList()">Generate List</button>
+    <ul id="List"></ul> -->
+    <input
+      type="text"
+      id="inputText"
+      placeholder="Enter your text here..."
+      oninput="updateText(event)"
+    />
+    <h1 id="pTag">This is p tag</h1>
+  </body>
+</html>
+<script>
+  //   let fruits = ["apple", "banana", "orage", "cucumber"];
+  //   function GenerateList() {
+  //     console.log("button clicked");
+  //     let conatiner = document.getElementById("List");
+  //     conatiner.innerHTML = "";
+  //     fruits.forEach((ele) => {
+  //       let li = document.createElement("li");
+  //       li.innerText = ele;
+  //       conatiner.appendChild(li);
+  //     });
+  //   }
+  function updateText(event) {
+    console.log(event.target.value);
+    document.getElementById("pTag").innerText = event.target.value;
+  }
+</script>

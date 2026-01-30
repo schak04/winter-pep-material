@@ -1,0 +1,159 @@
+1.Events:-
+Events are actions like click, keypress, submit, etc. that happen on a webpage.
+They are used to handle user interaction, update content, validate forms, and improve user experience.
+
+
+Examples of Events
+
+Clicking a button → click
+Typing in input → keyup
+Moving mouse → mousemove
+Submitting form → submit
+Page loading → load
+Scrolling → scroll
+
+We use events to make websites interactive.
+Without events:
+❌ Website = Only text and images (no interaction)
+
+With events:-Purpose of Using Events (Why They Are Important)
+
+You use events to:
+
+Handle User Actions
+clicks
+types
+submits
+hovers
+//Update Content Dynamically
+//Validate User Input
+//Improve User Experience
+Make website smooth and interactive.
+
+Example:-
+Live search
+Dropdown menu
+Image slider
+
+//Control Program Flow
+
+Run code only when needed.
+Instead of running all code at once.
+
+//There are two ways to use events:
+(a) Inline events in HTML
+(b) Events handled using JavaScript (addEventListener).
+
+//some type of events are:- onclick,mousehover,oninput,onchange,onkeydown etc.
+
+
+activity:-visit any website and use onclick to see if it works
+//document.body.onclick = function () {
+  console.log("User clicked on the body");
+}; 
+
+
+2.Use of addEventListener
+ Ex-
+ let container = document.getElementById("container");
+  container.addEventListener("mouseover", () => {
+    container.style.backgroundColor = "yellow";
+  }); 
+  container.addEventListener("mouseout", () => {
+    container.style.backgroundColor = "aquamarine";
+  });
+
+  //Activity- create a box and use event listener to chanage its color on double click(it should gain it's original color if clicked twice)
+  //Activity-Use onclick to chnage the text of an element and also using keydown 
+
+  **Event Bubbling**
+
+  //Event bubbling is when an event starts from target element and moves upward to parent elements.
+
+  //Event bubbling allows events to move from child to parent, which helps in event delegation, reduces listeners, and improves performance.
+  //Purpose of event bubbling is to handle multiple child events using one parent listener and improve performance.
+
+  **Event Delegation**
+
+  //Event delegation means:
+   Event delegation is a technique where a single event listener is added to a parent element to handle
+  events of its child elements using event bubbling.
+   document.querySelectorAll("li").forEach((li) => {
+    li.addEventListener("click", () => {
+      alert(li.innerText);
+    });
+  });
+
+  let ul = document.querySelector("ul");
+ul.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    alert(e.target.innerText);
+  }
+});
+
+3.Ways to select and manipulte elements
+//To get the children of a parent we can use .children method
+//To get the parent of a child we can use parentElement
+
+  parent.addEventListener(
+    "click",
+    () => {
+      console.log("Parent");
+    },
+    false,
+  ); // capturing
+
+  child.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("Child");
+  });
+
+  4.Keeping elements dynamic using event listeners
+
+  //use buttons to modify texts
+  //key press action----------------->improve
+
+  5. To explain how data can be made dynamic(usually data is being fetched from data base)
+     let items = ["apple", "banana", "mango", "orange"];
+
+  function GenerateList() {
+    let listContainer = document.getElementById("List");
+    listContainer.innerHTML = "";
+    items.forEach((ele) => {
+      let list = document.createElement("li");
+      list.innerText = ele;
+      listContainer.appendChild(list);
+    });
+  } 
+
+  //Keeping data dynamic using input tag using oninput event
+   <input
+      type="text"
+      id="inputTag"
+      placeholder="type the text..."
+      oninput="updateText(event)"
+    />
+    <li id="List"></li>
+
+   function updateText(event) {
+    console.log(event.target.value);
+    document.getElementById("List").innerText = event.target.value;
+  }
+
+  
+  Activity:- To chnage the text color of the text inside the the guven tag using same method
+
+  ans:- function updateText(event) {
+    console.log(event.target.value);
+    let color = event.target.value;
+    document.getElementById("List").style.color = color;
+  }
+
+  Assignment:- To create a dynamic form and validate using eventlisteners.
+  Preventing empty fields, email/phone regex, error messages, styling states 
+
+
+
+
+
+

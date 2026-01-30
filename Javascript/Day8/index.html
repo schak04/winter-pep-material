@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="parent">
+      This is parent tag
+      <!-- <div id="child">This is the child tag</div> -->
+    </div>
+  </body>
+</html>
+<script>
+  let conatiner = document.getElementById("parent");
+  let child = document.getElementById("child");
+
+  conatiner.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("The parent is clicked");
+    alert("The parent is clicked");
+  });
+
+  child.addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("The child is clicked");
+    alert("The child is clicked");
+  });
+
+
+
+
+   //Activity-Use onclick to chnage the text of an element and also using keydown 
+   
+</script>
+

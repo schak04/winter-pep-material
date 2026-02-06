@@ -1,0 +1,104 @@
+Rendering Lists (Arrays) in React
+Introduction
+Rendering lists, or arrays, in React is a fundamental aspect of building dynamic user interfaces.
+It allows developers to display dynamic content, such as user-generated data or information fetched from an external source.
+This process is crucial for creating responsive applications that update in real-time.
+React simplifies this task through its efficient rendering capabilities, particularly by utilizing the map() function to iterate over array elements and render them as individual components.
+This lesson will dive into the techniques for rendering lists in React, highlighting their importance in enhancing application flexibility and interactivity.
+
+ Note:- Importance of key----->
+The key prop plays a pivotal role in React's rendering process, especially when dealing with lists.
+It provides a unique identifier for each element, enabling React to manage items efficiently during updates.
+This mechanism is vital for optimizing performance and ensuring a smooth user experience.
+---------------------------------------------------------------
+Note:-
+key tells React: “This data belongs to this component.”
+So React can update only the changed part, not the whole list.
+
+Ex:-
+function ToDoList() {
+  return (
+    <div>
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+      <ul>{[<li>One</li>, <li>Two</li>, <li>Three</li>]}</ul>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <ToDoList />
+    </div>
+  );
+}
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
+
+Ex:-
+function ToDoList() {
+  const [toDoList, setToDoList] = React.useState([
+    { id: 1, description: "Item 1" },
+    { id: 2, description: "Item 2" },
+    { id: 3, description: "Item 3" },
+    { id: 4, description: "Item 4" },
+  ]);
+  return (
+    <div>
+      <ul>
+        {toDoList.map((item) => {
+          return <li key={item.id}>{item.description}</li>;
+        })}
+      </ul>
+    </div>
+  );
+}
+function App() {
+  return (
+    <div className="App">
+      <ToDoList />
+    </div>
+  );
+}
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
+//In this solution, we utilize map() to iterate over the toDoList array and render each item as a list element (<li>). 
+The key prop is crucial for helping React identify and track each element in the list, optimizing the rendering process.
+-----------------------------------------------------------------------------------------------
+Activitiy:-Build a User Profile Listing App Using React Components and Props
+data:-const [users, setUsers] = useState([
+  {
+    id: 1,
+    first_name: "Rahul",
+    last_name: "Sharma",
+    avatar: "https://i.pravatar.cc/150?img=3",
+  },
+  {
+    id: 2,
+    first_name: "Priya",
+    last_name: "Verma",
+    avatar: "https://i.pravatar.cc/150?img=5",
+  },
+  {
+    id: 3,
+    first_name: "Amit",
+    last_name: "Singh",
+    avatar: "https://i.pravatar.cc/150?img=8",
+  },
+  {
+    id: 4,
+    first_name: "Neha",
+    last_name: "Gupta",
+    avatar: "https://i.pravatar.cc/150?img=10",
+  },
+  {
+    id: 5,
+    first_name: "Rohan",
+    last_name: "Mehta",
+    avatar: "https://i.pravatar.cc/150?img=12",
+  },
+]);

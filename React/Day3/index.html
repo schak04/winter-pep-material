@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root">Hello From Dom</div>
+  </body>
+  <script type="text/babel">
+    function App() {
+      const [movie, setMovie] = React.useState([]);
+      const [movieName, setMovieName] = React.useState("");
+      async function fetchData() {
+        try {
+          let response = await fetch(
+            "https://reactmovie-7dcf7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
+          );
+          let result = await response.json();
+          const movieArray = Object.entries(result).map(
+            ([id, movie]) => (id, movie),
+          );
+          console.log(movieArray);
+
+          setMovie(result);
+          console.log(result);
+        } catch (error) {
+          error;
+        }
+      }
+
+      async function addMovie() {
+        try {
+          let response = await fetch(
+            "https://reactmovie-7dcf7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
+            {
+              method: "POST",
+            },
+          );
+          let result = await response.json();
+        } catch (error) {
+          error;
+        }
+      }
+      return (
+        <>
+          <h1>Fetching data from Api:</h1>
+          <input
+            type="text"
+            value={movieName}
+            placeholder="Enter the movie name..."
+            onChange={(e) => setMovieName(e.target.value)}
+          />
+          <button onClick={addMovie}>Add Movie</button>
+          <button onClick={fetchData}>Fetch Data</button>
+
+          <ul>
+            {data.map((ele, ind) => (
+              <li key={ind}>{ele.title}</li>
+            ))}
+          </ul>
+        </>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</html>

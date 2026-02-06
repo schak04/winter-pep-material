@@ -1,0 +1,70 @@
+Note:-We use fetch POST to save data in Firebase and fetch GET to read it, then display it using map().
+//Steps to create account and getting api from firbase:-
+(a). Go to firebase and click on go to console
+(b).Click on --->Create a project and set a preffered name
+(c). Go to build--->Realtime database-->Create a database
+(d).Select nearest location--->start in test mode(for lock mode you wil have to chnage the rule to read and write to true.)
+(e).now publish the chnages
+(f).Now your databse is ready to be used.
+
+Ex:-
+ function App() {
+      const [movies, setMovies] = React.useState([]);
+      const [movieName, setMovieName] = React.useState("");
+
+      async function fetchMovie() {
+        try {
+          let response = await fetch(
+            "https://reactmovie-7dcf7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
+          );
+          const result = await response.json();
+          const movieArray = Object.entries(result).map(([id, movies]) => ({
+            id,
+            movies,
+          }));
+          setMovies(movieArray);
+        } catch (error) {
+          console.log("Error while fetching data");
+        }
+      }
+
+      async function addMovie() {
+        if (!movieName) {
+          alert("Please add the movie name first...");
+        }
+        try {
+          const response = await fetch(
+            "https://reactmovie-7dcf7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
+            {
+              method: "POST",
+              body: JSON.stringify({ name: movieName }),
+              headers: { "content-type": "application/json" },
+            },
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      return (
+        <>
+          <h1>Movies</h1>
+          <input
+            type="text"
+            value={movieName}
+            placeholder="Enter the movie name"
+            onChange={(e) => setMovieName(e.target.value)}
+          />
+          <button onClick={addMovie}>Add movie</button>
+          <button onClick={fetchMovie}>Fetch Movies</button>
+          <ul>
+            {movies.map((movie, ind) => (
+              <li key={ind}>{movie.movies.name}</li>
+            ))}
+          </ul>
+        </>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+
+    Activity:-Do same with axios library

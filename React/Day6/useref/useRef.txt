@@ -1,0 +1,56 @@
+useRef:-
+useRef is part of React's Hooks API, allowing developers to maintain a consistent reference to a value or a DOM element throughout the component's lifecycle.
+It returns a mutable object with a .current property, which can be initialized with a value of any type.
+Unlike state updates with useState, updates to a useRef value do not cause the component to re-render,
+making it ideal for keeping track of values or DOM elements that do not directly impact the visual output of the component.
+
+//Basic Syntax:-
+Here's how to use useRef:
+
+Importing useRef: import { useRef } from 'react';
+Initialization: const myRef = useRef(initialValue);
+Accessing Ref: Use myRef.current to access the stored value.
+
+Q.Why is it useful?
+useRef provides a way to persist values across renders without triggering re-renders, offering a performance benefit for certain operations like accessing DOM elements,
+storing previous state for comparison, or keeping track of values that don't need to trigger visual updates. It's a critical tool for handling imperatives,
+such as focus management or integrating with third-party DOM libraries.
+
+Real World Examples :
+
+Form Input Focus: Automatically focus a text input when a component loads.
+Animation: Keep track of animation frames in a component.
+Comparing Props: Compare current props with previous ones to decide on rendering logic.
+Building Custom Element say a custom video player and managing it.
+Storing interval ids and persist across re-renders.
+Building custom components like Pin Component above.
+
+Ex:-
+import { useState, useRef } from "react";
+
+// useRef also remembers value through re-renders;
+// but does not trigger re-renders
+
+const ButtonWithUseRef = () => {
+  let ref = useRef(0);
+  const [flag, setFlag] = useState(false);
+
+  const handleClick = () => {
+    ref.current = ref.current + 1;
+    console.log(ref);
+  };
+
+  console.log("ButtonWithUseRef rendering...");
+  return (
+    <div>
+      <h1>Count : {ref.current}</h1>
+      <button onClick={handleClick}>BUTTON WITH USEREF</button>
+      <br />
+      <br />
+      <button onClick={() => setFlag(!flag)}>{flag ? "TRUE" : "FALSE"}</button>
+    </div>
+  );
+};
+
+export default ButtonWithUseRef;
+

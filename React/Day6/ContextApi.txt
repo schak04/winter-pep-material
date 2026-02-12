@@ -1,0 +1,157 @@
+Context API:-
+The Context API is a React feature that enables components to share some global data without having to pass props down manually through every level of the component tree.
+This approach significantly simplifies data flow and component structure, especially in large applications.
+
+Q.Why is it useful?
+Simplified Data Flow: By avoiding props drilling, the Context API makes data sharing across components easier and more direct.
+Enhanced Component Reusability: It decouples components from their parents, making them more modular and reusable.
+Better Code Maintenance: It makes the codebase cleaner and the data flow within the app more understandable and easier to debug.
+
+//Real-world Examples
+User Authentication State: Managing whether a user is logged in and sharing this state across components that need to know the user's authentication status.
+Theme Management: Storing the current UI theme settings (e.g., light or dark mode) and applying it across the entire application.
+Library Integration: Tools like react-router-dom use Context API under the hood to manage routing information across components
+
+//Benefits
+Simplified Data Flow: The need for passing props through every level is eliminated, streamlining the process of data sharing.
+Enhanced Reusability: Components can be designed to be more generic, fostering reuse.
+Improved Code Maintenance: The straightforward data flow enhances code readability and ease of maintenance.
+
+//Note:-it follows CPC Methodology: Create - Provide - Consume
+
+Step 1: Create Context
+Purpose: To initialize a React Context that will store the global data you want to share.
+export const AuthContext = React.createContext();
+
+Step 2: Provide
+Purpose: To make the created context available throughout the component tree.
+Ex:-
+export function AuthContextProvider({ children }) {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  return (
+    <AuthContext.Provider value={{ isLoggedIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+// In your main entry file (e.g., main.jsx)
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { AuthContextProvider } from "./context/AuthContextProvider";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>
+);
+
+Step 3: Consume
+Purpose: To access and utilize the context data in any component within the provided tree.
+Ex:-
+function BottomMainLeft() {
+  const { isLoggedIn } = React.useContext(AuthContext);
+  // Additional component code
+}
+
+//Conclusion
+Using multiple contexts in a React application enables the efficient management of different global states, such as user authentication and theme settings.
+This structured approach not only enhances the application's scalability and maintainability but also improves overall code readability and component reusability.
+Following best practices such as minimizing context values and optimizing through useMemo or useCallback ensures that your application remains performant.
+
+Ex:-
+
+const userContext = createContext(); //1. context creation
+
+function App() {
+  const [name, setName] = useState("Raj");
+
+  return (
+    //  Providing context
+    <userContext.Provider value={name}>
+      <Parent />
+    </userContext.Provider>
+  );
+}
+
+function Parent() {
+  return <Child />;
+}
+function Child() {
+  return <GrandChild />;
+}
+function GrandChild() {
+  //3. consumer
+  const consumer = useContext(userContext);
+  return <h1>Hello I am Pratik {consumer}</h1>;
+}
+export default App;
+
+//Children Prop Importance in context api:-
+The children prop in Context API defines which components are wrapped by the Provider.
+Only those children and their descendants can access the context value.
+
+Ex:-
+//Providing data globally
+import React, { createContext, useState } from "react";
+//Create context
+
+export const DataContext = createContext();
+function DataProvider({ children }) {
+  const [data, setData] = useState({
+    loading: false,
+    error: null,
+    value: null,
+  });
+
+  async function fetchData() {
+    setData({ ...data, loading: true });
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+      );
+      const result = await response.json();
+      setData({ ...data, loading: false, value: result });
+    } catch (error) {
+      setData({ ...data, loading: false, value: null, error: error.message });
+    }
+  }
+
+  //2.Data Providing
+  return (
+    <div>
+      <DataContext.Provider value={{ data, fetchData }}>
+        {children}
+      </DataContext.Provider>
+    </div>
+  );
+}
+
+export default DataProvider;
+
+//consumer
+Ex:-
+import React, { useContext } from "react";
+import { DataContext } from "../context/DataProvider";
+
+function DataComponent() {
+  const { data, fetchData } = useContext(DataContext);
+  console.log(data);
+
+  return (
+    <>
+      <h1>Data From Api:</h1>
+      <button onClick={fetchData}>Fetch Data</button>
+      <div>
+        {data.loading && <p>Loading data...</p>}
+        {data.error && <p>Error:{data.error}</p>}
+        {data.value &&
+          data.value.slice(0,20).map((post) => <p key={post.id}>{post.title}</p>)}
+      </div>
+    </>
+  );
+}
+
+export default DataComponent;
+
+

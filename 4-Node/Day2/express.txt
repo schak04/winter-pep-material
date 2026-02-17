@@ -1,0 +1,193 @@
+Express - fast, quick
+
+It's a very popular library
+
+It's so popular that it has earned it's name in the stack name itself
+MERN - E in MERN stands for Express;
+
+
+It's built on top of the HTTP module of node itself;
+
+
+Using HTTP module : 
+10 API endpoints - 4 -> 40
+
+
+
+Advantages of express 
+1. Clean code
+2. It's very intuitive
+3. Express's rich ecosystem of Middlewares;
+
+
+package.json -->It has all the information of your files.
+//Its always preferred to install the package.json first and the to install other dependencies later.
+
+route/path/endpoints - same just interchangeable words
+
+when writing codes we generally consideer method and route
+
+
+// Epress is built on top of  http,so every method of htpp can be used inside express but not vice versa.
+
+//basic setup
+//const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello from express");
+});
+
+app.listen(8000, () => {
+  console.log("server is running on 8000");
+});
+ 
+ Everytime when we do some chnages in the file we have to restart the application ,
+ To avoid such issue we use an external package called nodemon
+
+nodemon - installation
+npm i nodemon or
+npm install -g nodemon  --to install globally 
+
+after installing on the system you don't need to restart the server again and again on every chnage.
+in the scripts you can modify the commands to run the scripts yourself
+Ex:- npm start can be used after chnaging the start to include node express.js-->in package,json file
+
+//User can send data using body in application and to accept it will have to convert in json 
+which is done by a middileware called json()
+
+Ex:-
+//const express = require("express");
+const app = express();
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Hello from express");
+});
+
+app.post("/add", (req, res) => {
+  const data = req.body;
+  console.log(data);
+
+  res.send("Data received");
+});
+
+app.listen(8000, () => {
+  console.log("server is running on 8000");
+});
+
+
+CRUD 
+//With the help of post method the data can be added in a file easily
+Ex:-
+app.post("/posts/add", (req, res) => {
+  const data = req.body;
+  fs.writeFile("./posts.json", JSON.stringify(data), (err) => {
+    if (err) {
+      res.send("Error while creating file and adding data");
+    } else {
+      res.send("Data added in the file");
+    }
+  });
+  res.send("Data received");
+});
+
+//To get data from json file
+Ex:-async way
+app.get("/posts", (req, res) => {
+  fs.readFile("./db.json", "utf-8", (err, data) => {
+    data = JSON.parse(data);
+    res.send(data.posts);
+  });
+});
+
+//sync way
+app.get("/posts", (req, res) => {
+ let posts= fs.readFileSync("./db.json", "utf-8",);
+  let data=JSON.parse(posts)
+  res.send(data.posts)
+});
+
+
+// To add data inside json file 
+Ex:-
+app.post("/post/add", (req, res) => {
+  const data = req.body;
+  //first get the json data
+  console.log("existing data");
+  const existing_data = fs.readFileSync("./db.json", "utf-8");
+  console.log(existing_data);
+
+  //convert it to normal object
+  console.log("Data after conversion");
+  const parsed_data = JSON.parse(existing_data);
+  console.log(parsed_data);
+
+  // now after conversion we can do manipulation --> add/delete/etc.
+  parsed_data.orders.push(data);
+  console.log(parsed_data);
+
+  //now stringify it back to json
+  const stringified_data=JSON.stringify(parsed_data)
+  fs.writeFileSync("./db.json",stringified_data,"utf-8")
+  console.log("Post added successfully");
+  
+  //store it to the given file
+  res.send("data updated");
+});
+
+
+Query and Params
+
+Query : 
+course.masaischool.com?lecture=1234
+https://www.google.com/search?q=gemini
+req.query;
+
+
+Params : 
+req.params
+course.masaischool.com/lectures/12345
+api.xyz.com/users/12
+https://jsonplaceholder.typicode.com/posts/6
+
+{
+    "posts": [
+        {
+            "id" : 1,
+            "title": "DSA 101"
+        },
+        {
+            "title": "BE 101"
+        },
+        {
+            "title": "class 101"
+        },
+        {
+            "title": "class 201"
+        }
+    ],
+    "orders": [
+        {},
+        {}
+    ],
+    "cart": [
+        {},
+        {}
+    ]
+}
+
+
+Ex:-
+// query
+app.get("/welcome", (req, res) => {
+    const {name, age} = req.query;
+
+    res.send(age > 18 ? `Welcome ${name}, You are eligible to cast your vote`: `Sorry ${name}, you are not eligible`)
+})
+
+// params
+app.get("/lectures/:id", (req, res) => {
+    const lectureID = req.params.id
+   res.send(`Here is your ${lectureID} lecture`)
+})

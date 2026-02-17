@@ -1,0 +1,8 @@
+{
+  "posts": [
+    { "name": "Pratik Raj", "age": 28 },
+    { "name": "Vivek", "age": 28 }
+  ],
+  "orders": [{ "order1": "PaneerTikka" }],
+  "cart": [{}, {}]
+}

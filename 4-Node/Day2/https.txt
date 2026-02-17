@@ -1,0 +1,158 @@
+Q.What is a Server?
+If we just look at the word itself, server is the one that serves something.
+The system, that is making the request for something, is called the client
+Server accepts the request from the client and sends the response based on the request.
+
+//HTTP
+It stands for Hyper Text Transfer Protocol .
+Set of Protocol or rules that are required to communicate between client and server.
+HTTPS:- It is exactly the same with an added layer of security, it is achieved by SSL(Secure Socket Layer).
+
+//3 Way Handshake:-
+A 3 Way handshake takes place between the client and server, before the actual cycle starts
+First the client expresses the intent to the server.
+Server Acknowledges the client’s intent.
+Client will tell what it actually needs.
+
+Step 1 — SYN (Client → Server)
+A client (browser, API caller, etc.) wants to connect to your Node.js server.
+It sends a SYN packet saying:
+ “I want to start a connection.”
+Example: Browser connecting to a Node.js Express app.
+
+Step 2 — SYN-ACK (Server → Client)
+Your Node.js server (actually the OS TCP layer) replies with:
+ SYN + ACK
+This means:
+ “I received your request.”
+ “I’m ready too.”
+
+ Step 3 — ACK (Client → Server)
+ The client sends a final ACK packet.
+Now both sides agree the connection is open.
+After this, Node.js can send HTTP requests, responses, or WebSocket data.
+
+//Bandwidth
+Bandwidth is the data transfer capacity of a computer network.
+
+//HTTP Verbs/Methods
+GET: To read something from the server.
+PUT⇒Modify: Will replace the whole thing.
+PATCH⇒Modify: Will modify one specific thing in the whole thing.
+Delete: To delete something on the server.
+POST: To post/add/sent something to the server.
+We can achieve CRUD through this.
+
+//Note:-
+Node.js runs the code for every request, and browsers automatically send extra requests like favicon — 
+that’s why the console prints twice.
+
+//Problem statement
+Q.Whenever a request comes to our server,in our server, print(console.log) the request URL and the http method ?
+
+http Headers
+- they provide more information about the request or the response;
+
+const http = require("http");
+// console.log(http);
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/post") {
+    res.setHeader("content-type", "text");
+    res.end("<h1>Hello from Post</h1>");
+  } else {
+    res.end("Api is working");
+  }
+});
+
+let port = 9000;
+server.listen(port, () => {
+  console.log(`Server is running on ${port}`);
+});
+
+
+//Creating First Server
+Create a node project by npm init -y .
+Create a file named index.js .
+Now for creating the server we can use the inbuilt http module of node.
+
+We have programmed our server to give the response as per the request made.
+Whenever we make any changes in server we have to re run the server.
+
+//.end vs .write
+Here we are using `.write`, Now the client will not know that the response has been ended and it will keep on loading the page,
+that is why we have to use `.end`, so that the client knows that response has been ended.
+//http server is stateless
+
+//In node.js server responds on events as well
+
+const http = require("http")
+const fs = require("fs")
+const myserver =  http.createServer((req, res) => {
+                    if(req.method === "GET" && req.url === "/posts"){
+                        res.end("Here are your posts")
+                    }
+                    else if(req.method === "POST" && req.url === "/post"){
+                        let result = "";
+                        req.on("data", (data) => {
+                            result += data;
+                        })
+
+                        req.on("end", () => {
+                            console.log(result)
+                            res.end("Data received");
+                        })
+                    }
+                    else if(req.url === "/reports"){
+                        res.end("Here are your reports")
+                    }
+                    else if(req.url === "/lectures"){
+                        fs.readFile("./lecture.txt", {encoding : "utf-8"}, (err, data) => {
+                            res.end(data)
+                        })
+                    }
+                    else{
+                        res.end("API working")
+                    }
+})
+myserver.listen(8000)
+
+**Benchmarking**
+If we want to benchmark(measure the maximum capacity) of our server, we can do that;
+Benchmarking is stress-testing a server by sending many requests and measuring speed and performancenpm install -g autocannon
+We can use "autocannon" package;
+
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  // Home route
+  if (req.url === "/") {
+    res.end("Home Page");
+  }
+
+  // Post route (added delay for benchmarking demo)
+  else if (req.url === "/post") {
+    setTimeout(() => {
+      res.end("Hello from Post");
+    }, 100); // 100ms delay
+  }
+
+  // About route
+  else if (req.url === "/about") {
+    res.end("About Page");
+  }
+
+  // Default route
+  else {
+    res.end("404 - Page Not Found");
+  }
+});
+
+const port = 9000;
+
+server.listen(port, () => {
+  console.log(`Server is running on ${port}`);
+});
+
+
+

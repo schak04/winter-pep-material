@@ -1,0 +1,187 @@
+Database - Database management system?
+
+What :  
+        It's a software which is optimised for performing the CRUD operations on the data;
+
+        You can run this software on your computer locally or on a computer you rent online (cloud)
+
+        delete()
+        modify(23, {price : 500})
+
+        We just need to call/write a particular query and this software takes care of doing the C/R/U/D operation as per the query;
+
+Why do we need a database? 
+        - when we can store data in files like json for example, why do we need something like a database?
+
+        If I have 10,000 products in my data.json, and if I want to modify the 5th product
+
+
+        CRUD operations is what happen on data;
+
+        To perform CRUD operations on data stored in data.json is costly(in terms of time, processing - efficiency)
+
+Types of Databases : 
+
+1. SQL databases;
+                Examples : mssql, postgresql
+                Data is stored in the format of -  Tables, rows and columns;
+
+                Very structured format
+
+                SQL - Structured query language;
+
+2. No SQL Databases;
+                Examples : MongoDB;
+
+                {
+                    id : 3,
+                    name : shoes,
+                    brand : bata,
+                    price : 1000,
+                    category : footwear
+                    color : black,
+                    size : 10
+                },
+                {
+                    id : 4,
+                    name : cup,
+                    price : 250
+                },
+                {
+                    id : 7,
+                    name : router_ups
+                },
+                {
+                    id : 999,
+                    name : "...",
+                    origin : India
+                }
+
+
+3. Key-value databases;
+                Examples : local storage, Redis
+                Mostly used for caching etc;  --->imp
+
+
+4. Graph databases : 
+
+What is better - SQL or NoSQL?
+It depends;
+
+---------------------------------------------------------------------------------------------------------------
+
+MongoDB - M of the MERN stack;
+
+Why MongoDB?
+- It's very easy to learn especially for those who are used to Javascript
+- Most startups tend to use MongoDB
+- Once we learn MongoDB, it's easier to learn SQL Database as well;
+
+Structure in MongoDB
+
+            Databases
+                        - Collections
+                                        - documents
+
+
+            
+            ptweb16
+                        - students collection
+                                                - {
+                                                    name : "Pratik",
+                                                    city : "patna"
+                                                },
+                                                {
+                                                    name : "Swati",
+                                                    city : "bengaluru"
+                                                }
+
+
+                        - instructors collection
+                                                - {
+                                                    name : "Pratik",
+                                                    stack : "MERN"
+                                                }
+                                                {
+                                                    name : "Adiya",
+                                                    stack : "DSA"
+                                                }
+
+
+                        - ops team collection
+
+
+
+Database ---------------------> group of collections 
+    - Collections ------------------------------------->group of databses
+        - documents;
+
+//Signup on mongodb and installation of compass
+1. go to mongodb sigup page
+2. signup with your gmail accout(to avoid the xtra steps)
+3.fill the survey form(not fully mandatory)
+4.After it you will see a modal(cilck free cluster and create you can choose it's name yourself)
+5.choose username and password(keep it simple which you can remember)
+6. add the current ip address(choose the current) finish the setup and close it.
+7.once done click on database in the left sidebar and click on connect and select the compass operation
+8.you will see a mongodb url(copy it and save somwhere)
+9.install compass-->download mongodb compass
+10.copy the connection string from  mongodb atlas and paste it to connection string in compass and connect
+once connected open mongo shell and progress.
+  ^ this tool also has a terminal - Mongo shell which we'll be using to write the queries;
+
+db - database
+
+cls - for clearing the terminal
+
+
+1. show dbs
+
+2. use mern26 - to create the database
+   use db_name;
+
+    if we don't have a database,it'll create one 
+    if we have one, it'll use that;
+
+3. show collections - to see the existing collections in our db
+
+4. db - to see the current db we are in
+
+5. db.createCollection("collection_name") - creates a collection
+
+db.collection_name.C/R/U/D
+
+6. To *READ* the documents in a collection 
+    db.collection_name.find({})
+
+    db.collection_name.findOne({}) - returns one document, the first one which it finds matching the criteria;
+
+7. To *CREATE* the documents in a collection
+    db.collection_name.insertOne()
+
+
+    _id is automatically generated by MongoDB and it is random;
+    _id has a lot of significance in MongoDB
+
+    Homework - Find out what does a MongoDB _id consists of?
+
+
+    db.collection_name.insertMany([{},{}])
+    ^ to insert multiple documents
+
+
+8. To *DELETE* a document
+
+    db.collection_name.deleteOne({}) - delete the first document matching the criteria
+    db.collection_name.deleteMany({}) - deletes all the documents that match the criteria
+
+
+9. To *Update* a document
+
+    db.collection_name.updateOne({matching critiera}, {$set : {updated data}}) - Updates the first document that matches the criteria;
+
+    db.users.updateOne({name : "Bob"}, {$set : {city : "pune"}})
+
+    db.collection_name.updateMany({}, {}) - Updates all the documents that matches the criteria;
+
+https://www.mongodb.com/developer/products/mongodb/cheat-sheet/#crud

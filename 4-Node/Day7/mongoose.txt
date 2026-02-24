@@ -1,0 +1,189 @@
+//ORM(Object Relationship Model)
+ ORM is a technique that lets you interact with a database using objects and code instead of writing raw database queries.
+
+If we want to connect from our server to the Database, there are different libraries
+
+1. Sequelize (for connecting to a SQL Database)
+2. For connecting to a MongoDB Database : 
+        a) Mongo client
+        b) Mongoose 
+
+
+Mongoose : https://mongoosejs.com/
+//One of the most popular ORM to connect with database
+
+1. Establishing a connection between our program running in nodejs and MongoDB - done
+
+2. Creating Models
+        Model - blueprint/structure/
+        Cookie cutter example
+
+        Once we create a model, we can use that model to create as many documents as we want to and even for other crud operations;
+
+
+        Model helps us with defining the structure for our collection and it's documents;
+
+
+Instead of db.collection_name.find(), it's UserModel.find()
+There is no insert one in mongoose ,we use generally insertMany
+
+3. Validation - 
+        1. On the client/frontend/UI level
+        2. On the Backend - server side, on the payload that the server accepts
+        3. On the Backend - before we store in the DB;
+
+
+    Validation scenarios : 
+
+    a) Where we are passing more information than what is defined in the schema
+       - No Error, extra information simply doesn't get stored in the DB
+
+    b) Where we are passing less information than what is defined in the Schema
+       - No Error, unless a field which is marked *Required* is missed;
+
+    c) What if incorrect type of data is passed;
+    - type casting
+    - type : data type;
+    - casting : changing/converting/trying to change
+
+    "21" -> Number("21") = convertable/ type cast will be successfull;
+
+
+    "Twenty one" -> 21 =  type casting will not be successfull, hence we get the error
+
+    55 -> "55" = convertable -> type cast will be successfull;
+
+
+    d) Enum (Enumeration) -
+    An enumeration is a way to define a set of named constant values.
+     Only the values given in the Enum array will be the permitted ones;
+     Ex:-
+     status: {
+    type: String,
+     enum: ["pending", "approved", "rejected"]
+}
+
+
+//bcrypt:-
+a library used to hash and compare passwords.
+
+//Password hashing means converting a normal password (plain text) into a random-looking encrypted string using a mathematical algorithm 
+— so the real password is never stored in the database.
+pre() = Mongoose middleware
+
+async function (next, docs)
+This is the middleware function.
+
+//Adding bcrypt for password hashing:-
+Ex:-
+userSchema.pre("insertMany", async function (next, docs) {
+  for (const doc of docs) {
+    if (doc.password) {
+      doc.password = await bcrypt.hash(doc.password, 10);
+    }
+  }
+  next();
+});
+
+
+CRUD operations 
+
+1. we don't have .insertOne in mongoose, instead we have .create() or .save()
+Model.create(data)
+
+//const user = new Model(data);
+ await user.save();
+
+ 2. Read (Find)
+ Model.find()           // all documents
+Model.findOne()        // single document
+Model.findById(id)     // by _id
+
+3. Update
+   Model.updateOne()
+Model.updateMany()
+Model.findOneAndUpdate()
+Model.findByIdAndUpdate()
+Ex:-
+await User.findByIdAndUpdate(id, { age: 30 }, { new: true });
+
+3. Delete
+Model.deleteOne()
+Model.deleteMany()
+Model.findByIdAndDelete()
+Model.findOneAndDelete()
+
+https://mongoosejs.com/docs/api/query.html
+
+
+
+Conventions : 
+1. While creating a model, the collection name we have to give in singular, it'll automatically conver to plural;
+2. Whenever there is something, using which we can create it's "children", we name that with it's first letter capital;
+  eg : constructor function, class, model
+
+Note:-We capitalize the first letter of a Mongoose model because it behaves like a class/constructor in JavaScript, and by convention classes use PascalCase.
+It also helps distinguish models from document instances.
+
+  --------------------------------------------------------------------------------------
+  const mongoose = require("mongoose")
+require("dotenv").config()
+
+const userSchema = mongoose.Schema({
+    name : {type : String},
+    age : {type : Number, required : true},
+    city : {type : String},
+    country : {type : String,required : true, enum : ["India", "Maldives"]}
+})
+
+const Usermodel = mongoose.model("user", userSchema)
+
+
+//const connection =  mongoose.connect("mongodb+srv://niftynihal:<password>@cluster0.vmc6r.mongodb.net/ptweb16mongoose")
+
+const connection = mongoose.connect(`${process.env.MONGO_URL}/ptweb16mongoose`)
+       
+module.exports = {Usermodel, connection}
+
+------------------------------------------------------------------------------------------------
+const express = require("express")
+const {connection, Usermodel} = require("./db")
+
+const app = express();
+
+app.use(express.json())
+
+app.get("/", (req, res) => {
+    res.send({msg : "API working"})
+})
+
+app.get("/users", async (req, res) => {
+    const users = await Usermodel.find()
+    res.send({users : users})
+})
+
+app.post("/users/add", async (req, res) => {
+    const user = req.body;
+    try{
+        await Usermodel.create(user)
+        return res.send({message : "user added successfully"})
+    }
+    catch(err){
+        console.log(err)
+        return res.send({message : "something went wrong, please try again later"})
+    }
+})
+
+app.listen(8000, async () => {
+    try{
+        await connection
+        console.log("connected to mongodb successfully")
+    }
+    catch(err){
+        console.log("err while connecting to Mongodb")
+        console.log(err)
+    }
+    console.log("listening on port 8000 successfully")
+})
+
+

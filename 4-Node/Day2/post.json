@@ -3,6 +3,6 @@
     { "name": "Pratik Raj", "age": 28 },
     { "name": "Vivek", "age": 28 }
   ],
-  "orders": [{ "order1": "PaneerTikka" }],
-  "cart": [{}, {}]
+  "orders": [{ "order1": "PaneerTikka" }, { "order2": "Choumin" }],
+  "cart": [{ "cart": "Shoes" }]
 }

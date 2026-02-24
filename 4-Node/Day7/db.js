@@ -24,7 +24,7 @@ const UserModel = mongoose.model("user", userSchema);
 const main = async () => {
   try {
     // await mongoose.connect(
-    //   `mongodb+srv://kpratik071997_db_user:Pratik%401997@cluster0.wogxc1g.mongodb.net/mern234`,
+    //   `your_mongodb_string/mern234`,
     // );
     await mongoose.connect(`${process.env.MONGO_URL}/mern234`);
     console.log("Connected to mongodb successfully");

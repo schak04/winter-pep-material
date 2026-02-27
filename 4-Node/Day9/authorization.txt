@@ -1,0 +1,259 @@
+Optimisations/corrections : 
+
+1. Client sending a token
+
+    - Client will send in the headers and we'll take it out from there
+    - In this  format : 
+                `Authorisation : Bearer {token}`
+
+2. Making Authentication middleware
+    
+    - all the logic for Authentication will be in this middleware;
+    - we can use this middleware for the specific protected endpoints that we want to;
+
+    Btw, we can use a mmiddleware for a specific API endpoint, by writing it this way : 
+
+    app.get("/reports", middleware, (req, res) => {
+    return res.send({msg : "here are the reports"})
+})
+
+//authentication_middleware
+const authentication_middleware = (req, res, next) => {
+  const autorization_header = req.headers.authorization; // Bearer  jwt_token
+  const token = autorization_header.split(" ")[1]; //[Bearer jwt_token]
+  // const token = req.headers.authorization?.split(" ")[1];
+  jwt.verify(token, "shhhhh", function (err, decoded) {
+    if (decoded) {
+      next();
+    } else {
+      res.send({ message: "You are not authorized" });
+    }
+  });
+};
+// app.use(authentication_middleware);
+
+//summary
+app.get("/summary", async (req, res) => {
+  res.send({ message: "Here is your Summary" });
+});
+
+
+
+3. Storing passwords in the database, the right way;
+
+  Right now, what we are doing is storing the password in the database in plaintext
+
+  We shouldn't be doing that.
+
+  We should be storing it in undreadable format;
+
+  Encryption : 
+        plaintext -----> encryption_algo/logic/key --------> encrypted text
+        cup -----> encryption_algo/logic/key ------> dvq
+
+
+        encrypted text ----> decryption_algo/logic/key ---> plaintext
+        lfz           -----> decryption_algo/logic/key ----> key
+
+  Is Encryption a reversible process?  --> Yes
+  All we need to know the Encryption key;
+
+  Hashing : 
+
+        plain text ------> Hashing_algo (SHA1) -----> hash
+        cup        -----> SHA1 -----> igh
+        key       ------> SHA -----> alsdf
+        cup        ------> SHA1 ----> igh
+
+        Hashing is not reversible;
+
+ We'll hash the passwords before storing it in the DB;
+
+  bcrypt.hash(password, 5, async function (err, hash) {
+    await UserModel.create({ name, email, password: hash });
+    res.send({ message: "Data inserted successfully" });
+  });
+
+  //login
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await UserModel.findOne({ email });
+  if (!user) {
+    res.send({ message: "Login failed,signup first" });
+  }
+  const hashed_password = user.password;
+  bcrypt.compare(password, hashed_password, function (err, result) {
+    if (result) {
+      const token = jwt.sign({ foo: "bar" }, "shhhhh");
+      res.send({ message: "Login successful", token: token });
+    } else {
+      res.send({ message: "Login failed" });
+    }
+  });
+});
+
+-----------------------------------------------------------------------------------------------------
+ **AUTHORISATION**
+
+ It's a process of identifying(as well as enforcing?) what access does the user have;
+
+Example : LMS
+
+- Based on the role of the user, we control the access;
+- For example, in the LMS, students can just view lectures
+- whereas, the instructors can edit/delete/create lectures
+
+ **Role Based Access Control**
+ (RBAC)
+
+ Steps : 
+ 1. Have a role for each user;
+ 2. Define what roles should have what access;
+ 3. Determine the role and give access accordingly;
+
+Roles - students, instructors, admin
+
+a. students - should be able to view lectures;
+b. instructors - should be able to view lectures as well as reviews;
+
+Explanation 
+
+1. While creating a token when a user logs in, we can add whatever we want as a "payload" in the token
+     {foo : "bar"} or {org : "masai"} etc;
+
+2. Instead of adding irrelevant things like above, we strategically add 
+        {userID : user._id} in the token;
+
+3. In Authentication mdidleware, when we do jwt.verify it gives us decoded value in the callback if the token is correct.
+
+4. In the decoded object, we'll have the things that we added while creating token - refer point 2;
+        {userID : user._id}
+
+5. from the userID, can we get more information about the user?
+        const user = UserMOdel.find({_id : userID})
+
+6. can we get the user's role?
+        const role = user.role;
+
+7. A middleware has access to the request object - yes;
+
+8. A middleware can modify the request object - yes;
+        req.userrole = role
+
+9. After going through the middleware, whichever API endpoint, the request will come to;
+    that req.userrole will have the role of the user;
+
+10. Now, based on that role, decide what response you want to send;
+
+------------------------------------------------------------------------------------
+const express = require("express")
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const {connection} = require("./db")
+const {UserModel} = require("./models/User.model")
+
+const app = express();
+app.use(express.json())
+
+app.get("/", (req, res) => {
+    res.send({msg : "API working, check docs"})
+})
+
+app.post("/signup", async (req, res) => {
+    const {email, password, role} = req.body;
+
+    bcrypt.hash(password, 5, async function(err, hash) {
+
+        await UserModel.create({email, password : hash, role})
+        res.send({msg : "Sign up successfull"})
+
+    });
+})
+
+app.post("/login", async (req, res) => {
+    const {email, password} = req.body;
+    const user = await UserModel.findOne({email})
+
+    if(!user){
+        return res.send({msg : "Login failed, Sign up first"})
+    }
+
+    const hashed_password = user.password;
+
+    bcrypt.compare(password, hashed_password, function(err, result) {           
+        if(result){
+            const token = jwt.sign({userID : user._id}, 'shhhhhh')
+            res.send({msg : "Login successfull", token : token})
+        }
+        else{
+            res.send({msg : "Login failed,Invalid credentials"})
+        }
+    });
+})
+
+const authentication = (req, res, next) => {
+     // const authorization_header = req.headers.authorization // Bearer alsjdflajdf
+    // const token = authorization_header.split(" ")[1] // [Bearer, "alsdfjalsdf"]
+    const token = req.headers.authorization?.split(" ")[1]
+    jwt.verify(token, 'shhhhhh', async function(err, decoded) {
+        if(decoded){
+            const userID = decoded.userID;
+            const user = await UserModel.findOne({_id : userID})
+            const role = user.role
+            req.userrole = role;
+            next()
+        }
+        else{
+            return res.send({msg : "login first"})
+        }
+    })
+}
+
+app.get("/reports", authentication, (req, res) => {
+    return res.send({msg : "here are the reports"})
+})
+
+app.get("/contact", (req, res) => {
+    return res.send({msg : "contact us at ...."})
+})
+
+
+//students and instructors should be able to access this
+app.get("/lectures", authentication, (req, res) => {
+    const role = req.userrole;
+    if(role === "student" || role === "instructor"){
+        return res.send({msg : "lectures ...."})
+    }
+    else{
+        return res.send({msg : "you are not authorised"})
+    }
+})
+
+//instructors should be able to access this
+app.get("/reviews", authentication,  (req, res) => {
+    const role = req.userrole;
+    if(role === "instructor"){
+        return res.send({msg : "reviews ...."})
+    }
+    else{
+        return res.send({msg : "you are not authorised"})
+    }
+})
+
+
+app.get("/summary", authentication, (req, res) => {
+    return res.send({msg : "here are the summary"})
+})
+
+app.listen(8080, async () => {
+    try{
+        await connection;
+        console.log("Connected to mongodb successfully")
+    }
+    catch(err){
+        console.log("error while connecting to MongoDB")
+        console.log(err)
+    }
+    console.log("listening on port 8080")
+})

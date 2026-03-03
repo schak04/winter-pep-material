@@ -1,0 +1,68 @@
+1. MERN Questionnaire
+
+A short questionnaire was conducted to assess students' understanding of the MERN stack concepts previously taught. Questions were focused on JavaScript fundamentals, React basics, Node.js concepts, Express.js, and MongoDB. The purpose was to evaluate knowledge retention and clarify doubts.
+
+2. MERN Stack Overview
+
+MERN stands for MongoDB, Express.js, React.js, and Node.js.
+It is a full-stack JavaScript framework used to build modern web applications.
+
+MongoDB – NoSQL database
+Express.js – Backend framework for Node.js
+React.js – Frontend library for building user interfaces
+Node.js – JavaScript runtime for server-side development
+The MERN stack allows developers to use JavaScript for both frontend and backend development.
+
+3. Brief Overview of SDLC
+
+SDLC (Software Development Life Cycle) is a structured process followed to develop software efficiently and systematically.
+It defines the stages involved in software development from initial idea to maintenance.
+The main goal of SDLC is to deliver high-quality software within time and budget.
+
+4. SDLC Phases
+
+The main phases of SDLC include:
+Requirement Gathering – Understanding client needs
+Planning – Defining project scope, cost, and timeline
+Design – Creating system architecture and database design
+Development – Writing and building the application
+Testing – Identifying and fixing bugs
+Deployment – Releasing the application
+Maintenance – Updating and improving the system
+
+5. Software Development Models Overview
+
+Software development models are different approaches used to implement SDLC.
+Some common models include:
+Waterfall Model – Linear and sequential approach
+Agile Model – Iterative and flexible approach
+Scrum – A framework under Agile
+These models help teams manage and organize the development process effectively.
+
+6. DevOps Teaching Plan Overview
+
+A brief overview of how DevOps will be taught was shared.
+The plan includes:
+Introduction to DevOps concepts
+Understanding SDLC and Agile
+
+CI/CD concepts
+
+Version Control (Git)
+Build tools and automation
+Cloud deployment basics
+Monitoring and collaboration practices
+The focus will be on both theoretical concepts and practical implementation.
+
+7. Introduction to DevOps
+
+DevOps is a combination of Development (Dev) and Operations (Ops).
+It is a practice that promotes collaboration between development and operations teams to deliver software faster and more reliably.
+Key goals of DevOps:
+Faster delivery
+Continuous Integration and Continuous Deployment (CI/CD)
+
+Automation
+
+Improved collaboration
+Reliable and scalable systems

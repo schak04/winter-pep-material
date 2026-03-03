@@ -1,0 +1,426 @@
+## 1. What is Software Development Life Cycle (SDLC)?
+
+SDLC (Software Development Life Cycle) is a structured process used to develop high-quality software in a systematic way.
+It defines all the stages involved in software creation — from idea to maintenance.
+
+### Phases of SDLC:
+
+1. Requirement Gathering
+2. Planning
+3. Design
+4. Development
+5. Testing
+6. Deployment
+7. Maintenance
+
+Imp:--->
+SDLC ensures better quality, proper planning, cost control, and timely delivery.
+---
+
+//Models in SDLC:-
+
+## 2. Traditional vs Agile
+
+### Traditional Model (Waterfall)
+
+* Linear and sequential approach
+* Each phase completed before moving to next
+* Requirements fixed at beginning
+* Heavy documentation
+* Changes are difficult as it's impossible to move back and modify the changes.
+
+### Agile Model
+
+* Iterative and incremental approach
+* Work divided into small cycles (sprints)
+* Continuous customer feedback
+* Flexible to requirement changes
+* Faster delivery of working software
+
+### Key Differences
+
+| Feature              | Traditional | Agile     |
+| -------------------- | ----------- | --------- |
+| Approach             | Linear      | Iterative |
+| Flexibility          | Low         | High      |
+| Changes              | Difficult   | Easy      |
+| Delivery             | One-time    | Frequent  |
+| Customer Involvement | Low         | High      |
+---
+
+## 3. Problems in Traditional IT
+
+1. Slow software delivery
+2. Poor communication between teams
+3. Late bug detection
+4. Manual deployment process
+5. High failure rate during releases
+6. Long feedback cycles
+
+Traditional IT separated development and operations, causing delays and conflicts.
+
+Some other models are:-
+(a) Spiral:-
+The Spiral Model is a risk-driven software development model that combines elements of both Waterfall and Iterative models.
+It focuses heavily on risk analysis and is best suited for large, complex, and high-risk projects.
+The development process moves in a spiral (loop), and each loop represents a phase of the project.
+
+Why it is called "Spiral"?
+Because the development process is represented as a spiral diagram where each cycle (loop) goes through planning, risk analysis, development, and evaluation.
+Each loop improves the product gradually.
+
+Phases of the Spiral Model (Each Loop Contains):-
+
+Planning:-
+Define objectives
+Identify requirement
+Estimate cost and schedule
+Risk Analysis
+Identify potential risks
+Analyze technical and business risks
+Plan risk mitigation strategies
+Engineering (Development & Testing)
+Develop the feature
+Perform testing
+
+Evaluation:-
+Customer reviews the progress
+Feedback is collected
+Decide next steps
+Then the next spiral begins with improved requirements.
+
+Key Features:-
+Strong focus on risk management
+Iterative development
+Customer feedback at every phase
+Suitable for large and critical systems
+
+Advantages:-
+Early identification of risks
+Flexible to changes
+Continuous customer involvement
+Suitable for complex projects
+
+Disadvantages:-
+Expensive
+Complex to manage
+Not suitable for small projects
+Requires risk analysis expertise
+Best Suitable For
+Large enterprise systems
+Defense projects
+Banking systems
+High-budget and high-risk projects
+
+
+(b)Bigbang, etc.
+
+---
+
+## 4. What is DevOps?
+
+DevOps is a culture and set of practices that combines Development (Dev) and Operations (Ops) teams to improve collaboration and automate software delivery.
+
+Goal of DevOps:
+
+* Faster delivery
+* Better quality
+* Continuous integration and deployment
+* Improved collaboration
+
+DevOps focuses on automation, monitoring, continuous feedback, and rapid releases.
+
+---
+
+## 5. Dev vs Ops Gap
+
+### Development Team (Dev)
+
+* Focus: Writing code
+* Goal: Deliver new features quickly
+* Works in fast cycles
+
+### Operations Team (Ops)
+
+* Focus: Stability and reliability
+* Goal: Keep system running without failure
+* Prefers fewer changes
+
+Problem:
+Dev wants speed, Ops wants stability → Conflict occurs.
+DevOps removes this gap by encouraging collaboration, shared responsibility, and automation.
+
+---
+
+## 6. DevOps Lifecycle
+
+The DevOps lifecycle is continuous and includes:
+
+1. Plan
+2. Develop
+3. Build
+4. Test
+5. Release
+6. Deploy
+7. Operate
+8. Monitor
+
+This cycle repeats continuously for continuous improvement.
+
+---
+
+## 7. CI/CD Meaning
+
+CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment).
+It is a DevOps practice that automates building, testing, and deploying applications.
+
+---
+
+## 8. CI vs CD vs Continuous Deployment
+
+### Continuous Integration (CI)
+
+* Developers frequently merge code into a shared repository
+* Automated build and testing
+* Detect bugs early
+
+### Continuous Delivery (CD)
+
+* Code is automatically tested and prepared for release
+* Deployment to production requires manual approval
+
+### Continuous Deployment
+
+* Code automatically deployed to production
+* No manual approval needed
+
+### Difference Summary
+
+| Feature                 | CI           | Continuous Delivery | Continuous Deployment |
+| ----------------------- | ------------ | ------------------- | --------------------- |
+| Code Integration        | Yes          | Yes                 | Yes                   |
+| Automated Testing       | Yes          | Yes                 | Yes                   |
+| Manual Approval         | Not Required | Required            | Not Required          |
+| Auto Production Release | No           | No                  | Yes                   |
+
+---
+
+## 9. Why Cloud?
+
+Cloud computing allows users to access computing resources (servers, storage, databases) over the internet instead of owning physical hardware.
+
+Reasons to use Cloud:
+
+1. Cost-effective (Pay-as-you-go)
+2. Scalable
+3. High availability
+4. Remote access
+5. Faster deployment
+6. Reduced maintenance
+
+---
+
+## 10. On-Premises vs Cloud
+
+### On-Premises
+
+* Infrastructure owned and managed by company
+* High initial investment
+* Limited scalability
+* Requires maintenance team
+
+### Cloud
+
+* Infrastructure provided by cloud provider
+* Pay-as-you-go model
+* Easily scalable
+* Managed by provider
+
+### Comparison
+
+| Feature       | On-Prem         | Cloud            |
+| ------------- | --------------- | ---------------- |
+| Cost          | High initial    | Pay-as-you-go    |
+| Scalability   | Limited         | High             |
+| Maintenance   | Company managed | Provider managed |
+| Accessibility | Limited         | Global access    |
+
+---
+
+## 11. IaaS, PaaS, SaaS Models
+
+### IaaS (Infrastructure as a Service)
+
+* Provides virtual machines, storage, networks
+* User manages OS and applications
+* Example: Virtual servers
+
+### PaaS (Platform as a Service)
+
+* Provides platform to develop and deploy applications
+* User manages application only
+* Provider manages infrastructure
+
+### SaaS (Software as a Service)
+
+* Ready-to-use software over internet
+* No installation required
+* Example: Email services, Google Docs
+
+### Service Model Comparison
+
+| Model | What You Manage  | Provider Manages |
+| ----- | ---------------- | ---------------- |
+| IaaS  | Applications, OS | Hardware         |
+| PaaS  | Applications     | OS + Hardware    |
+| SaaS  | Nothing          | Everything       |
+
+---
+
+## 12. Public vs Private vs Hybrid Cloud
+
+### Public Cloud
+
+* Shared infrastructure
+* Available to general public
+* Cost-effective
+
+### Private Cloud
+
+* Dedicated infrastructure for one organization
+* Higher security
+* More control
+
+### Hybrid Cloud
+
+* Combination of public and private cloud
+* Flexible and balanced approach
+
+### Deployment Model Comparison
+
+| Type    | Ownership    | Security | Cost     |
+| ------- | ------------ | -------- | -------- |
+| Public  | Provider     | Medium   | Low      |
+| Private | Organization | High     | High     |
+| Hybrid  | Both         | Balanced | Moderate |
+
+---
+
+---
+
+## 5. Traditional IT vs Agile (Conceptual Understanding)
+
+### Traditional IT Approach
+
+* Development and Operations teams work separately
+* Long development cycles
+* Manual testing and deployment
+* Late feedback from customers
+* Higher chances of failure during release
+
+### Agile Approach
+
+* Cross-functional teams
+* Short development cycles (Sprints)
+* Continuous feedback
+* Frequent releases
+* Better customer satisfaction
+
+---
+
+## 6. Introduction to DevOps
+
+### What is DevOps?
+
+DevOps is a culture and set of practices that combines Development (Dev) and Operations (Ops) teams to improve collaboration, automation, and faster software delivery.
+
+### Why DevOps is Needed?
+
+* To remove the gap between Dev and Ops
+* To automate build, testing, and deployment
+* To deliver software faster and more reliably
+
+---
+
+## 7. Dev vs Ops Gap
+
+### Development Team (Dev)
+
+* Focuses on writing new features
+* Works quickly
+* Wants frequent changes
+
+### Operations Team (Ops)
+
+* Focuses on stability and uptime
+* Prefers fewer changes
+* Responsible for production systems
+
+Problem:
+Dev wants speed, Ops wants stability → This creates conflict.
+
+Solution:
+DevOps promotes collaboration, shared responsibility, and automation.
+
+---
+
+## 8. DevOps Lifecycle
+
+The DevOps lifecycle is continuous and includes the following stages:
+
+1. Plan
+2. Develop
+3. Build
+4. Test
+5. Release
+6. Deploy
+7. Operate
+8. Monitor
+
+This cycle repeats continuously for improvement and faster delivery.
+
+---
+
+## 9. CI/CD Overview
+
+### What is CI?
+
+Continuous Integration (CI) is the practice of automatically integrating code changes into a shared repository multiple times a day, followed by automated build and testing.
+
+### What is CD?
+
+Continuous Delivery (CD) ensures that code is always ready to be deployed to production after automated testing.
+
+### What is Continuous Deployment?
+
+Continuous Deployment automatically releases code to production without manual approval.
+
+### CI vs CD vs Continuous Deployment
+
+| Feature                 | CI           | Continuous Delivery | Continuous Deployment |
+| ----------------------- | ------------ | ------------------- | --------------------- |
+| Code Integration        | Yes          | Yes                 | Yes                   |
+| Automated Testing       | Yes          | Yes                 | Yes                   |
+| Manual Approval         | Not Required | Required            | Not Required          |
+| Auto Production Release | No           | No                  | Yes                   |
+
+---
+## 10. Other SDLC Models (For Knowledge)
+
+Apart from Waterfall and Agile, other SDLC models include:
+
+* V-Model
+* Spiral Model
+* Iterative Model
+* Incremental Model
+These models are used based on project requirements and risk level.
+---
+
+## Updated Connection with DevOps
+
+* SDLC defines how software is built.
+* Agile improves development speed and flexibility.
+* Scrum helps implement Agile.
+* DevOps extends Agile by integrating operations and automation.
+* CI/CD enables faster and reliable delivery.
+---

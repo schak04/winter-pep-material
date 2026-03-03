@@ -1,0 +1,49 @@
+1. What is DevOps?
+DevOps is a combination of 'Development' and 'Operations'.
+It is a culture and practice that helps development and operations teams work together to build, test, and release software faster and more reliably.
+Key Goals of DevOps:
+• Faster software delivery
+• Continuous Integration and Continuous Deployment (CI/CD)
+• Automation of repetitive tasks
+• Better collaboration between teams
+• Reduced errors and downtime
+Common DevOps Tools:
+• Git – Version Control
+• Docker – Containerization
+• Jenkins – CI/CD Automation
+• Kubernetes – Container Orchestration
+• Terraform – Infrastructure as Code
+
+
+2. What is Cloud Computing?
+Cloud Computing means delivering computing services such as servers, storage, databases, networking, and software over the internet ('the cloud') instead of using local machines.
+Why Cloud Computing?
+• No need to buy physical servers
+• Pay only for what you use
+• High scalability
+• Global availability
+• Better security and backup systems
+Major Cloud Providers:
+• Amazon Web Services (AWS)
+• Microsoft Azure
+• Google Cloud Platform (GCP)
+
+
+3. Difference Between DevOps and Cloud Computing
+DevOps focuses on HOW software is developed and deployed.
+Cloud Computing focuses on WHERE software is hosted and run.
+
+Example:
+• You build an application → Development
+• You automate testing & deployment → DevOps
+• You host it on AWS or Azure → Cloud Computing
+
+
+4. How DevOps and Cloud Work Together
+In modern IT companies, DevOps and Cloud are closely connected. Cloud platforms provide infrastructure, and DevOps practices automate deployment on that infrastructure.
+Example Workflow:
+1. Developer writes code
+2. Code pushed to Git repository
+3. CI/CD pipeline builds and tests the application
+4. Docker creates a container image
+5. Application deployed to cloud server

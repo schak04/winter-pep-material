@@ -1,0 +1,86 @@
+To Use all the required things while this course journey you will need :-
+
+1.Install some tools and softwares on your system
+2.Signup on online accounts.
+3.AWS account sigunp and setup.
+
+//We will take a reference from a resource:-https://github.com/hkhcoder/vprofile-project
+
+Depending on the project requirements we will install required toools and softwares from this resource.
+
+Pacakage Managers:-
+
+(a) Chocolatey (For Windows)
+Chocolatey is a package manager for Windows.
+It allows users to install, update, and manage software using the command line.
+It simplifies the process of installing tools like Git, Node.js, Docker, etc.
+
+//You can also download the softwares manually but it will take more time.
+
+(b) Homebrew (For macOS)
+Homebrew is a package manager for macOS.
+It helps users install and manage software using terminal commands.
+It is commonly used to install tools like Git, Python, Node.js, and many development packages.
+
+To Intsall Homebrew on MacOs:-
+1.
+//Tools:-
+(a) Oracle VM VirtualBox
+Oracle VM VirtualBox is a virtualization software (hypervisor).
+It is used to create and run virtual machines on a physical computer.
+It works on Windows, Linux, and macOS (Intel-based Macs).
+
+(b) VMware Fusion
+VMware Fusion is a virtualization software designed for macOS.
+It is mainly used on latest MacBooks with ARM (Apple Silicon) chips such as M1, M2, M3.
+It allows users to run multiple operating systems as virtual machines on Mac.
+
+(c) Vagrant
+Vagrant is a virtual machine automation tool.
+It is used to automatically create, configure, and manage virtual machines.
+It works with virtualization providers like VirtualBox, VMware, and Hyper-V.
+
+Note:-We will install some more tools later given in the image
+
+Accounts & Signup:-
+(a) GitHub (Already Done)
+GitHub is a code hosting platform used to store and manage source code.
+It uses Git for version control.
+Developers use it for collaboration, version tracking, and project management.
+
+(b) GoDaddy or Any Other Domain Provider (Not Required for Now)
+GoDaddy is a domain registration and hosting service provider.
+It is used to buy domain names and host websites.
+This is not required at the initial stage of DevOps learning.
+
+(c) Docker Hub
+Docker Hub is a cloud-based repository used to store and share Docker images.
+Developers can push and pull container images from Docker Hub.
+
+(d) SonarCloud
+SonarCloud is a cloud-based code quality and security analysis tool.
+It is used to detect bugs, vulnerabilities, and code smells in the source code.
+
+//Summmary:-
+GitHub → Store code
+Docker Hub → Store Docker images
+SonarCloud → Check code quality
+GoDaddy → Buy domain and hosting (later use)
+
+//AWS Prerequisites:-
+(a) Create AWS Free Tier Account
+Create an AWS Free Tier account to access AWS services with limited free usage.
+It allows beginners to practice cloud services like EC2, S3, IAM, etc. without major cost.
+
+(b) Setup IAM with MFA
+IAM (Identity and Access Management) is used to manage users, roles, and permissions in AWS.
+MFA (Multi-Factor Authentication) adds an extra layer of security by requiring a second verification method.
+
+(c) Configure a Billing Alarm
+A billing alarm is used to monitor AWS usage costs.
+It sends alerts when the cost exceeds a specified limit, helping avoid unexpected charges.
+
+(d) Request an SSL Certificate for HTTPS
+SSL certificates are used to secure communication between the user and the website.
+In AWS, certificates are usually requested through AWS Certificate Manager (ACM).
+This enables HTTPS encryption for secure web applications.

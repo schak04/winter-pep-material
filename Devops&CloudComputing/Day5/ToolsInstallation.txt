@@ -1,0 +1,113 @@
+//Tools Prerequisites for Centos 9, RHEL9 & Rocky Linux
+
+Installing Virtualbox
+Open Terminal and execute below commands
+
+sudo yum update
+sudo yum install patch gcc kernel-headers kernel-devel make perl wget -y
+sudo reboot
+
+
+Login, open terminal and execute below commands
+
+sudo wget http://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo -P /etc/yum.repos.d
+sudo yum install VirtualBox-7.1 -y
+
+
+Installing Vagrant
+Open Terminal and execute below commands
+
+sudo dnf update -y
+sudo dnf config-manager --add-repo=https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo dnf install vagrant -y
+
+
+Install VScode
+Open Terminal and execute below commands
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf check-update
+sudo dnf install code -y
+
+
+Install git
+Open Terminal and execute below commands
+dnf install git -y
+
+
+
+Install JDK & Maven
+Open Terminal and execute below commands
+dnf install java-17-openjdk java-17-openjdk-devel -y
+dnf install maven-openjdk17 -y
+
+
+//Tools Prerequisites for Ubuntu 24
+
+
+Install Virtualbox
+Open Terminal and Execute below mentioned commands.
+sudo apt update
+sudo apt install curl wget gnupg2 lsb-release -y
+curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vbox.gpg
+curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/oracle_vbox.gpg
+
+$ echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+sudo apt update
+ 
+sudo apt install -y linux-headers-$(uname -r) dkms
+sudo apt install virtualbox-7.1 -y
+sudo usermod -aG vboxusers $USER
+ 
+newgrp vboxusers
+
+
+Install Vagrant
+
+Open Terminal and Execute below mentioned commands.
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg 
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 
+sudo apt update 
+sudo apt install vagrant -y
+sudo apt install libarchive-dev libarchive-tools -y
+ 
+
+
+
+
+Install Git
+Open Terminal and Execute below mentioned commands.
+sudo apt install git -y
+
+Install jdk17
+sudo apt-get install openjdk-17-jdk -y
+
+Install Maven
+sudo apt-get install maven -y
+
+
+
+Install VSCode
+
+sudo apt-get install wget gpg -y
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+ 
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+ 
+rm -f packages.microsoft.gpg 
+sudo apt install apt-transport-https -y
+ 
+sudo apt update
+sudo apt install code -y
+
+
+Install Sublime Text
+$ sudo apt update
+
+$ sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+$ curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+$ sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
+$ sudo apt install sublime-text -y
+
+

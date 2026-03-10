@@ -1,0 +1,4 @@
+Steps:-
+1.Look for AWS console.
+here console in aws means the web interface and with it you can manage all your resources from it.
+2.signup with your email(rot user)

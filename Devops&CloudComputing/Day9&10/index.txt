@@ -1,0 +1,387 @@
+## 3. File Permissions
+Linux has three types of permissions:
+
+r = Read (4)
+w = Write (2)
+x = Execute (1)
+
+Three categories of users:
+* Owner
+* Group
+* Others
+Meaning:
+Owner: Read, Write, Execute
+Group: Read, Execute
+Others: Read only
+
+**Users and Groups:-
+• Users and groups are used to control access to files and resources
+• Users login to the system by supplying their username and password
+• Every file on the system is owned by a user and associated with a group
+• Every process has an owner and group affiliation, and can only access the resources its owner or group can access.
+
+• Every user of the system is assigned a unique user ID number (the UID)
+• Users name and UID are stored in /etc/passwd
+• User's password is stored in /etc/shadow in encrypted form.
+• Users are assigned a home directory and a program that is run when they login (Usually a shell)
+• Users cannot read, write or execute each other's files without permission.
+
+Types of user
+
+TYPE	   EXAMPLE	            USER ID (ID)	   GROUP ID (GID)	   HOME DIR	           SHELL
+ROOT	    root	                  0	               0	           /root    	           /bin/bash
+REGULAR	 pratik,vagrant	   1000 to 60000	   1000 to 60000	  /home/username	     /bin/bash
+SERVICE	 ftp, ssh, apache 	1 to 999	        1 to 999	       /var/ftp etc	       /sbin/nologin
+
+ROOT: The superuser with full system access
+REGULAR: Normal user accounts
+SERVICE: System accounts for running services (restricted shells like nologin)
+
+----------------------------------->
+### chmod Command
+chmod is a Linux command used to change file or directory permissions, controlling who can read, write, or execute the file
+
+There are 3 types of users:
+u → User (file owner)
+g → Group
+o → Others (everyone else)
+
+There are 3 types of permissions:
+r → Read (view file contents)
+w → Write (modify the file)
+x → Execute (run the file like a program/script)
+
+Ex:-The First Character:
+Character	Meaning
+-	Regular file
+d	Directory
+l	Symbolic link
+c	Character device
+b	Block device
+s	Socket
+p	Named pipe
+
+Ex:--->
+-rw-r--r-- user user 1234 file.txt      ← Regular file (starts with -)
+drwxr-xr-x user user 4096 folder/       ← Directory (starts with d)
+lrwxrwxrwx user user   10 link.txt      ← Symbolic link (starts with l)
+
+Ex of  permission:
+-rwxr-xr--
+| Section | Meaning                        |
+| ------- | ------------------------------ |
+| rwx     | Owner can read, write, execute |
+| r-x     | Group can read and execute     |
+| r--     | Others can only read           |
+
+//Syntax of chmod:-chmod [permissions] filename
+
+Ex:-chmod u+x script.sh
+Explanation:--->Meaning: Give execute permission to the user (owner).
+
+Method 1: Symbolic Mode------->
+chmod [who][operator][permission] file
+Operators:
+
++ → add permission
+- → remove permission
+= → set exact permission
+
+Ex:-chmod u+x file.sh
+//Owner can execute the file.
+
+Ex:-chmod g-w file.txt
+Ex:-chmod o+r file.txt
+
+Method 2: Numeric Mode
+Each permission has a number value:
+| Permission | Value |
+| ---------- | ----- |
+| r          | 4     |
+| w          | 2     |
+| x          | 1     |
+
+Add them together.
+| Permission | Calculation | Number |
+| ---------- | ----------- | ------ |
+| rwx        | 4+2+1       | 7      |
+| rw-        | 4+2         | 6      |
+| r-x        | 4+1         | 5      |
+| r--        | 4           | 4      |
+
+
+Examples:
+chmod 755 file.txt
+| User   | Permission |
+| ------ | ---------- |
+| Owner  | rwx (7)    |
+| Group  | r-x (5)    |
+| Others | r-x (5)    |
+So the file becomes executable by everyone but writable only by owner.
+
+Ex:-chmod 777 file.txt
+//Everyone can read, write, execute (not recommended for security).
+
+Ex:-chmod 644 file.txt
+//Predict the ans.
+
+How to Check Permissions:-->
+
+Ex:-ls -l
+//output:--->-rwxr-xr-- 1 user user 1200 file.sh
+This shows the current permissions of the file.
+------------------------------------------------------->
+### chown Command
+The chown command is used to change the owner of a file or directory.
+In Linux, every file has:
+
+an owner (user)
+a group
+chown allows us to change who owns the file.
+
+//Basic Syntax:--->chown [new_owner] filename
+Ex:-chown pratik file.txt
+The owner of file.txt becomes pratik.
+
+//Changing Owner and Group:-
+Syntax:-chown owner:group filename
+Ex:-chown pratik:developers file.txt
+Explanation:-->
+| Property | Value      |
+| -------- | ---------- |
+| Owner    | pratik     |
+| Group    | developers |
+
+//Change ownership of directory and all files inside
+Syntax:-->chown -R user1 folder
+-R means recursive (apply to all files inside the folder).
+
+//Important Note:--->
+Usually only the root (administrator) can change file ownership.
+
+Example:
+sudo chown pratik project.txt
+Before:-owner → root
+After:owner → pratik
+---------------------------------------------------------------------------
+
+# 4. Process Management (Linux)
+A **process** is a running instance of a program.
+Examples:
+
+* Opening a browser
+* Running a Python script
+* Executing a shell command
+Every process has a unique **Process ID (PID)**.
+---
+
+## ps Command
+The **ps (process status)** command displays information about currently running processes.
+Example:-ps
+This shows processes running in the current terminal.
+
+Example:-ps aux
+
+Meaning of options:
+a  → show processes of all users
+u  → show detailed information
+x  → show background processes
+
+Example Output:
+USER       PID  %CPU %MEM COMMAND
+root      1023   0.1  0.3 sshd
+pratik    2345   0.5  1.2 chrome
+
+PID = Process ID
+COMMAND = program that is running
+
+Ex:-ps -ef
+---
+
+## top Command
+The **top** command displays real-time system processes(dynamic) and system resource usage.
+Example:-top
+
+It shows:
+* CPU usage
+* Memory usage
+* Running processes
+* Process IDs
+* Resource consumption
+
+To exit top, press:-q
+---
+
+## kill Command
+The **kill** command terminates a process using its **Process ID (PID)**.
+
+Syntax:-kill PID
+
+Example:-kill 1234
+
+This stops the process with PID **1234**.
+Force Kill:
+kill -9 1234
+The **-9 option** sends a **SIGKILL signal** and immediately stops the process.
+---
+
+##Summary
+ps   → Shows running processes
+top  → Shows real-time system usage and processes
+kill → Stops a process using its PID
+
+-------------------------------------------------------------------------------
+# 5. Cron Jobs (Linux)
+
+**Cron** is a time-based job scheduler in Linux.
+It is used to **automatically run repetitive tasks** at specific times.
+
+Ex:-
+Think of it like an alarm clock for commands
+Instead of ringing, it runs a command/script at a specific time
+
+Examples:
+* Running backups
+* Sending reports
+* Cleaning temporary files
+* Running scripts at fixed times
+
+Q.What is Cron?
+Cron = Background service (daemon)
+It keeps running and checks:
+-->“Is there any task scheduled right now?”
+---
+
+## crontab Command
+The **crontab** command is used to **schedule tasks in cron**.
+
+### Open Cron Editor
+crontab -e
+This opens the **cron job editor** where you can add scheduled tasks.
+---
+
+## Cron Format
+* * * * * command
+| Field | Meaning             |
+| ----- | ------------------- |
+| 1st * | Minute (0–59)       |
+| 2nd * | Hour (0–23)         |
+| 3rd * | Day of Month (1–31) |
+| 4th * | Month (1–12)        |
+| 5th * | Day of Week (0–7)   |
+
+Diagram:
+* * * * * command
+          | | | | |
+          | | | | +---- Day of week (0–7)
+          | | | +------ Month (1–12)
+          | | +-------- Day of month (1–31)
+          | +---------- Hour (0–23)
+          +------------ Minute (0–59)
+
+---
+## Example Cron Job--->
+| Symbol | Meaning                         |
+| ------ | ------------------------------- |
+| `*`    | Every value                     |
+| `,`    | Multiple values (e.g., 1,5,10)  |
+| `-`    | Range (e.g., 1-5)               |
+| `/`    | Step (e.g., */5 = every 5 mins) |
+
+0 2 * * * /home/user/backup.sh
+
+Meaning:
+Minute → 0
+Hour → 2
+Day → Every day
+Month → Every month
+Weekday → Every day
+This will **run the script `backup.sh` every day at 2:00 AM**.
+---
+## Useful Cron Examples
+Run every day at 5 AM
+0 5 * * * /home/user/script.sh
+Run every hour
+0 * * * * command
+Run every minute
+* * * * * command
+---
+##Summary
+Cron → Linux scheduler for automatic tasks
+crontab -e → opens cron editor
+Cron format → minute hour day month weekday command
+--------------------------------------------------------------------------------------
+
+## 6. Bash Scripting Basics
+
+Bash is a shell scripting language used to automate tasks.
+
+### Basic Script Structure
+
+#!/bin/bash
+
+echo "Hello World"
+
+Save file as script.sh and give execute permission:
+chmod +x script.sh
+./script.sh
+
+### Variables
+
+name="Pratik"
+echo "My name is $name"
+
+### If Condition
+
+if [ $name == "Pratik" ]
+then
+echo "Welcome"
+fi
+
+### Loop Example
+
+for i in 1 2 3
+do
+echo $i
+done
+------------------------------------------------------------------------------------------
+
+## 7. Vagrant VM Provisioning
+
+Vagrant is a tool used to create and manage virtual machines in a simple and automated way.
+
+### Why Use Vagrant?
+
+* Easy VM setup
+* Reproducible environments
+* Useful for development and testing
+
+### Basic Steps:
+
+1. Install VirtualBox
+2. Install Vagrant
+3. Initialize project:
+   vagrant init
+4. Start VM:
+   vagrant up
+5. Connect to VM:
+   vagrant ssh
+6. Stop VM:
+   vagrant halt
+
+### Vagrantfile
+
+The Vagrantfile defines VM configuration such as:
+* Box image
+* CPU and memory
+* Network settings
+* Provisioning scripts
+
+Example Provisioning:
+config.vm.provision "shell", inline: <<-SHELL
+sudo apt update
+sudo apt install nginx -y
+SHELL
+
+This automatically installs Nginx when VM starts.
+-------------------------------------------------------------------------------------

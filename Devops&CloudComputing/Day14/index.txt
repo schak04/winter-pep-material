@@ -1,0 +1,71 @@
+# Advanced Bash Scripting(Important)
+Advanced Bash scripting means using more powerful Bash features to write better, reusable, and smarter scripts.
+
+##1. Functions
+
+```bash
+greet() {
+  echo "Hello $1"
+}
+
+greet Pratik
+```
+---
+
+## 2. Arguments
+```bash
+echo "First argument: $1"
+echo "All arguments: $@"-->$@ means all arguments together
+```
+---
+
+## 3. Arrays
+
+```bash
+arr=(10 20 30)
+
+echo ${arr[0]}   # 10
+echo ${arr[@]}   # All elements
+```
+---
+
+## 4. Case Statement
+
+```bash
+read value
+
+case $value in
+  1) echo "One" ;;
+  2) echo "Two" ;;
+  *) echo "Other" ;;
+esac
+```
+---
+## 5. File Handling
+//File handling means checking or working with files and directories.
+
+```bash
+if [ -f file.txt ]; then
+  echo "File exists"
+else
+  echo "File not found"
+fi
+```
+---
+
+## 6. Debug Mode
+//Debug mode shows each command before it runs.
+It helps us understand:
+what the script is doing
+where the error is happening
+
+```bash
+set -x   # shows execution steps
+//When set -x is enabled, Bash prints the execution steps line by line.
+
+Ex:-
+#!/bin/bash
+set -x
+name="Pratik"
+echo $name
+```

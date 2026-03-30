@@ -1,0 +1,227 @@
+#Cloud Computing Fundamentals
+-------------------------------------------------------------------------------------
+Q.What is Cloud Computing?
+Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
+Instead of buying, owning, and maintaining physical data centers and servers.
+you can access technology services such as:-
+Computing power
+Storage
+Databases
+These services are provided on an as-needed basis from a cloud provider like Amazon Web Services (AWS).
+
+Follow the link for more detailed information
+Link:-https://aws.amazon.com/what-is-cloud-computing/
+---------------------------------------------------------------------------------------
+## 1. Cloud Service Models (IaaS, PaaS, SaaS)------------------>Already covered
+
+### IaaS (Infrastructure as a Service)
+* Provides basic computing resources: **virtual machines, storage, networking**
+* You manage: OS,Software, apps, Applications
+* Cloud provides:Server,Storage,Networking
+* Cloud provider manages: hardware
+
+Ex:- AWS EC2, Azure VM
+You get a raw computer, you set everything up.
+Simple ans:--->“IaaS = You rent a computer and control everything”
+---------------------------------------------
+### PaaS (Platform as a Service)
+* Provides platform to run applications
+* You manage: application code
+* Provider manages: OS, runtime, infra
+
+Ex:- AWS Elastic Beanstalk, Google App Engine.
+You just write code, platform handles the rest
+Simple ans:--->“PaaS = You focus on code, cloud handles setup”
+---------------------------------------------
+### SaaS (Software as a Service)
+
+* Ready-to-use applications over internet
+* No setup required
+* You manage: Nothing
+
+Ex:- Gmail, Zoom, Dropbox.
+Just use the software.
+
+simple ans:--->“SaaS = Just use the app”
+
+-------------------------------------------
+## 2. IAM (Identity and Access Management)
+IAM is used to control who can access what in the cloud.
+
+Ex:-college campus
+
+*Core Components of IAM
+1. IAM Users
+2. IAM Roles
+3. IAM Policies
+
+1. IAM Users
+* Individual accounts for people/services
+* Have login credentials(Have username & password)
+
+Ex:-Pratik (student), Admin (teacher)
+------------------------------------------------
+2. IAM Roles
+
+* Temporary access (used by services, not users)
+* No permanent credentials(not humans usually)
+Example:
+EC2 server accessing S3
+App accessing database
+No password, only temporary access
+------------------------------------------------
+3. IAM Policies
+
+Rules that define permissions
+Written in JSON format
+
+* JSON documents defining permissions
+* Example:-
+Allow read from S3
+Deny deleting files
+```json
+{
+  "Effect": "Allow",
+  "Action": "s3:GetObject",
+  "Resource": "*"
+}
+```
+Ex:-
+* User = Person
+* Role = Temporary permission
+* Policy = Rules
+
+Note:-IAM is the security system of cloud that controls access.
+-------------------------------------
+**AWS(Amazon Web Services)**
+  AWS (Amazon Web Services) is a cloud platform that provides computing, storage, databases,
+  and many other services over the internet.
+
+ Note:-AWS lets you use powerful computers and tools online instead of buying your own.
+
+*Real-Life Analogy
+
+Think of AWS like a renting service 🏢:
+Instead of buying a building (servers)
+You rent space and resources when needed
+You pay only for what you use
+ 
+**AWS Provides:---->
+🖥️ Compute → Run applications (EC2)
+💾 Storage → Store files (S3)
+🗄️ Databases → Store structured data (RDS)
+🌐 Networking → Connect resources (VPC)
+🔐 Security → Control access (IAM)
+-------------------------------------
+## 3. EC2 (Elastic Compute Cloud)
+
+* Virtual server in the cloud
+* Used to run applications
+
+### Key Concepts:
+* Instance Types → CPU, RAM configs
+* AMI → Pre-configured OS image
+* Key Pair → Secure login
+
+ Ex:-Hosting a website on a virtual machine
+--------------------------------------
+
+## 4. S3 (Simple Storage Service)
+
+* Object storage (store files like images, videos)
+
+### Features:
+* Buckets = folders
+* Highly durable (99.999999999%)
+* Public or private access
+
+Ex:-Store user uploads or static website files
+---------------------------------------
+
+## 5. EBS (Elastic Block Storage)
+
+* Block storage attached to EC2
+* Works like a hard disk
+
+### Use Case:
+* Store OS, databases
+Difference:------>
+* S3 = file storage
+* EBS = disk storage
+---------------------------------------
+
+## 6. RDS (Relational Database Service)
+
+* Managed database service
+
+### Supports:
+* MySQL, PostgreSQL, etc.
+
+### Features:
+* Automated backups
+* Scaling
+* High availability
+
+Ex:-Store application data (users, orders)
+-------------------------------------
+
+## 7. VPC (Virtual Private Cloud)
+
+* Your private network inside cloud
+
+### Features:
+* Control IP ranges
+* Isolate resources
+Your own private data center in AWS.
+-----------------------------------
+
+## 8. Subnets
+
+* Division of VPC
+### Types:
+* Public Subnet → Internet access
+* Private Subnet → No direct internet
+
+ Example:----->
+* Web server → Public
+* Database → Private
+
+---------------------------------
+
+## 9. Security Groups
+
+* Virtual firewall for EC2
+
+### Rules:
+
+* Allow inbound/outbound traffic
+* Based on port, protocol, IP
+
+Ex:-
+* Allow HTTP (port 80)
+* Allow SSH (port 22)
+---------------------------------
+
+## 10. CloudFront
+
+* CDN (Content Delivery Network)
+
+### Purpose:
+
+* Deliver content faster globally
+
+Ex:-
+* Serve images/videos via nearest server
+-------------------------------
+
+## 11. CloudWatch (Basics)
+
+* Monitoring service
+
+### Features:
+* Logs
+* Metrics (CPU usage, memory)
+* Alerts (alarms)
+
+Ex-
+* Alert if CPU > 80%

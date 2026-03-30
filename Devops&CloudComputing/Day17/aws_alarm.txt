@@ -1,0 +1,36 @@
+Please follow the given steps to open account on aws and access services(required):-
+
+1.Go to aws console(refers to web interface).
+2.Click on create account(with a new email to avoid payment related issues or you can simply abondon it later if such thing occurs).
+3.After filling details verify it.
+4. Set your root user password(Keep it strong).
+5.Choose the type of services(free/paid-->opt for paid).
+6.Fill the details and accept to continue.
+7.Set the payment method(opt upi),it will deduct 2 rupees for now.
+8.Once done you will be redirected to other interface where you will have to fill all details.
+9.Select the support plan-->opt for basic for now.
+10.Once logged in choose the service region(north virginia preffered).
+11.Now click on ec2 service and go to dashboard.
+12.It may show some errors(rare) then contact to aws support(to get clarification if your account is not active).
+13. The account will have an account id and url which can used to access your account.
+14.By default the url contains account id and can be modified.
+15. To change it serach for IAM and go to account applications.
+16.After updating you can secure your account login(using MFA) as it is very risky.
+17.On your device you will have to install google authenticator.
+20.Now click on MFA and set up the device name(as per your wish).
+21. validate on google authenticator by adding the credentials by scanning the qr code  on your device.
+22. Your account for root user is successfully ready but in real time we use it for billing, support and other high level activities.
+23.To consume aws computing resource it's always preffered to use IAM user.
+24.To create IAM user go to users and click on create user by entering a valid user name.
+25.allow to use policy and give the user administrator access.
+26.Once you create the user use the credentials to login and access other features.
+27.Now set MFA(Multi factor authentication) of it by clicking on  security credentials.
+28.Once you set logout with root user and login with IAM user and reset your password.
+29.Once done logout again and login with root user to set billing alarm to avaoid to use any paid services.
+30.When you are ready with root user search for cloud watch to set alarm.
+31.Follow the cost and billing from the dropdown & go to billing prefrences.
+32.Go back to cloud watch and refresh the page & go to all alarm and create the alarm by selecting the metric.
+33.Click on billing total estimated charge and select the currency and hit select metric.
+34.Now select a threshold value (1$)  and move to next section to select the new topic in notification section.
+35.Now add the topic and Give alarm a name and create alarm.
+36.Your alarm has been created and you have to verify it to use properly.

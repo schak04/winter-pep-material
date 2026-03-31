@@ -1,0 +1,142 @@
+# AWS EC2 (Elastic Compute Cloud)
+
+## 1. What is EC2?
+
+EC2 (Elastic Compute Cloud) is a service provided by AWS that allows you to create and use virtual servers in the cloud.
+EC2 = Renting a computer (server) on the internet
+Instead of buying a physical computer, you can use EC2 whenever you need and pay only for the time you use it.
+---------------------------------
+## 2. Why Do We Need EC2?
+
+Before cloud:
+* Companies had to buy physical servers
+* Expensive and hard to scale
+
+With EC2:
+* No need to buy hardware
+* Start/stop anytime
+* Scale up or down easily
+
+Ex:-
+If your app gets more users, you can launch more EC2 instances instantly.
+-------------------------------
+
+## 3. Key Features of EC2
+
+(a). On-demand:-Pay only for what you use
+(b). Scalable:-Increase or decrease servers anytime
+(c). Flexible:-
+     -Choose OS (Linux, Windows)
+     -Choose CPU, RAM, storage
+(d). Secure:-Controlled using key pairs and security groups
+-------------------------------
+
+## 4. What is an EC2 Instance?
+
+EC2 Instance = A virtual machine (VM)
+It behaves like a real computer:
+* Has CPU, RAM, storage
+* Can run applications
+* Can be accessed via internet
+------------------------------
+
+## 5. Steps to Launch an EC2 Instance (High Level)
+
+(a). Choose AMI (Amazon Machine Image)
+
+   * Example: Ubuntu, Amazon Linux
+   -->Choose aws ami and create it 
+   -->It will give you user name(important to login) and password ( leave for later)
+   -->scroll down and look for instnace type.
+   -->it tell us about the storage,network spee, cpu usage etc.
+   -->To login create key pair (it will give you two ip's public and private(will be downloaded on you machines))
+   -->Now configure the netwok settings 
+   -->Type these commands in advance settings 
+   ```
+   #!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+```
+-->Now launch the instance 
+
+(b). Choose Instance Type
+
+   * Example: t2.micro (small, free tier)
+
+(c). Configure Instance
+
+   * Network, storage, etc.
+
+(d). Add Security Group
+
+   * Rules for access (like firewall)
+
+(e). Create Key Pair
+
+   * Used to login securely
+
+(f). Launch Instance
+------------------------------------
+
+## 6. Important Terms
+
+(a). AMI (Amazon Machine Image)
+
+* Template for your server
+* Includes OS and pre-installed software
+
+(b). Instance Type
+
+* Defines power of machine
+* Example: CPU, RAM
+
+(c). Key Pair
+
+* Used to connect to instance
+* Private key = login password
+
+(d). Security Group
+
+* Acts like a firewall
+* Controls incoming/outgoing traffic
+--------------------------------
+
+## 7. How to Connect to EC2?
+
+For Linux:
+* Use SSH
+* Command: ssh -i key.pem ubuntu@public-ip
+
+For Windows:
+* Use RDP
+-------------------------------
+
+## 8. Real-Life Analogy
+
+Think of EC2 like renting a room:
+* AMI = Room design
+* Instance Type = Room size
+* Key Pair = Room key
+* Security Group = Door lock rules
+-------------------------------
+
+## 9. Use Cases
+
+* Hosting websites
+* Running backend servers
+* Testing applications
+* DevOps practice labs
+---------------------------------
+
+## 10. Quick Summary (For Students)
+
+* EC2 = Virtual server in cloud
+* Instance = Running server
+* AMI = OS template
+* Key Pair = Login access
+* Security Group = Firewall
+
+main idea:-You can create and use servers anytime without buying hardware.
+---------------------------------

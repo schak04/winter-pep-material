@@ -1,0 +1,68 @@
+🌍 CloudFront (CDN)
+-------------------------------
+Q. What is CloudFront?
+CloudFront is AWS’s Content Delivery Network (CDN) service.
+It delivers content to users faster by caching it at locations closer to them.
+--------------------------------
+Q.Why Do We Need CDN?
+Without CDN:-
+User requests go to main server (far away)
+High latency-Slow loading ⏳
+
+With CDN:-
+Content served from nearest location
+Fast loading
+-----------------------------------
+Key Concepts::-
+
+1. Edge Locations
+Global servers where content is cached
+Located near users
+2. Origin
+The main source of data Can be:
+S3 bucket
+EC2 instance
+Load Balancer
+
+3. Distribution
+Configuration that tells CloudFront:
+Where content is stored (origin)
+How to deliver it
+
+Q.How CloudFront Works (Flow)
+
+User requests a file (image/video)
+Request goes to nearest edge location
+If cached → return immediately ✅
+If not cached → fetch from origin
+Store in cache for future requests
+--------------------------------------------
+**Real-World Example
+Imagine Netflix 🎬
+
+Video stored in main server
+CloudFront caches it globally
+You stream from nearest server
+
+Result:
+Faster streaming
+Less buffering
+
+** Benefits:-
+🚀 Low latency (fast delivery)
+🌍 Global availability
+📉 Reduced load on origin server
+💰 Cost optimization
+----------------------------------------------
+Use Cases:-
+Static websites (HTML, CSS, JS)
+Video streaming
+Image delivery
+APIs (faster responses)
+--------------------------------------------
+Important Features:-
+Caching
+HTTPS support
+Access control (private content)
+Integration with S3, EC2
+-------------------------------------------

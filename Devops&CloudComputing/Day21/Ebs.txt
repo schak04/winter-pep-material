@@ -1,0 +1,82 @@
+💾 Amazon EBS (Elastic Block Store):-
+EBS is block storage used with EC2 (like a hard disk).
+EBS is like a hard disk that we attach to an EC2 server
+-------------------------------------------------
+Q.Why Do We Need EBS?
+
+When we launch an EC2:
+It needs storage to:
+Install OS
+Store files
+Run applications
+-->That storage = EBS
+------------------------------------------------
+Key Points:-
+
+EBS = Block Storage
+Data is stored in blocks (like disk sectors)
+Works like:-
+Laptop hard disk 💻
+SSD
+-------------------------------------------------
+Persistent storage
+Data is NOT lost even if EC2 stops
+Unlike instance storage (temporary)
+--->Stop EC2 → Data still exists ✅
+
+Attached to EC2:-EBS cannot work alone,Must be attached to an EC2 instance
+AZ-Specific :-EBS exists in one Availability Zone,You cannot directly attach EBS from one AZ to EC2 in another AZ
+             
+Ex:-
+Hard disk connected to CPU
+------------------------------------------------
+Types of EBS:-
+
+1.gp3 → General purpose SSD
+  
+Default type
+Balanced performance
+Used for most applications
+Ex:-
+Websites
+Small apps
+
+2.io1/io2 → (High Performance SSD)
+Very fast
+High IOPS (input/output operations)
+Ex:-
+Databases
+Banking apps
+
+3.st1 → (Throughput Optimized HDD)
+Good for large data processing
+Not for fast access
+Ex:-
+Big data
+Logs
+------------------------------------------------
+Features:-
+
+Snapshots (backup)
+Backup of EBS stored in S3
+Ex:-Take snapshot before making changes
+
+Encryption
+Data is encrypted for security
+Useful for :-
+Sensitive data
+Production apps
+
+Resize volumes
+Means:
+Increase storage size
+Increase performance
+Without stopping EC2 (in most cases)
+---------------------------------------------------
+Q.How EBS Works (Flow)---------------------------------->Important
+
+1.Launch EC2
+2.Attach EBS volume
+3.OS uses EBS as disk
+4.Store/read data
+---------------------------------------------------

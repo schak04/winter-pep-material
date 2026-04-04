@@ -1,0 +1,67 @@
+Security Groups
+-------------------------------------
+Q.What is a Security Group?
+Security Group is a virtual firewall for EC2 instances.
+Security Group controls what traffic is allowed to enter and leave your EC2
+
+-------------------------------------
+Q.Why Do We Need Security Groups?
+
+When your EC2 is running:
+It is exposed to network traffic 🌐
+So We need to:
+-Allow only required traffic
+-Block unwanted access
+--------------------------------------
+Key Concept:-
+
+Security Group acts as Gatekeeper of EC2
+It Decides:
+Who can enter
+Who can leave
+--------------------------------------
+Rules:-
+
+1.Inbound Rules (Incoming Traffic)
+It Controls:
+Traffic coming into EC2
+Ex:-
+Allow port 22 → SSH access
+Allow port 80 → Website access
+
+2.Outbound Rules (Outgoing Traffic)
+It Controls:
+Traffic going out from EC2
+Ex:-
+EC2 calling external API
+Sending response to users
+---------------------------------------
+Features:
+
+1.Stateful (Very Important)
+If inbound traffic is allowed → response is automatically allowed
+Ex:-
+You allow SSH (port 22)
+When you connect → response comes back automatically
+No need to allow return traffic manually
+
+2.Only Allow Rules
+Security Groups only allow traffic
+There is no deny rule
+So:
+If not allowed → automatically blocked ❌
+------------------------------------------
+Common Ports:-
+| Port | Purpose                |
+| ---- | ---------------------- |
+| 22   | SSH (Linux login)      |
+| 80   | HTTP (Website)         |
+| 443  | HTTPS (Secure website) |
+| 3306 | MySQL                  |
+------------------------------------------
+Q.How Security Group Works (Flow)
+
+1.User sends request to EC2
+2.Security Group checks rules
+3.If allowed → request goes inside ✅
+4.If not allowed → blocked ❌

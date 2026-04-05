@@ -1,0 +1,19 @@
+Amazon S3(Simple storage service)
+-----------------------------------------------
+Amazon Simple Storage Service (Amazon S3) is storage for the internet.
+You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere on the web.
+**S3 Basics:-
+• It is Object-Based Storage
+• Data is replicated across multiple facilities
+• Unlimited Storage
+• Amazon S3 stores data as objects within buckets
+• Bucket name has to be unique
+-----------------------------------------------
+S3 Bucket:-
+A bucket is a logical unit of storage in Amazon Web Services (AWS).
+Object Storage is a computer data storage architecture that manages data as Objects.
+-----------------------------------------------
+Steps:-
+1.Open aws console and search for s3,click on create bucket.
+2.Follow a proper and unique name for it and enable versoning and click to create.
+Note:-By default any object you upload on the bucket is private

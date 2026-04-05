@@ -1,0 +1,17 @@
+RDS(Relational database service):-
+Amazon RDS is a distributed relational database srvice.
+It is highly available at multi-AZ deployments.
+Effortless scaling feature.
+Read replicas for performance.
+--------------------------------------------------
+RDS Setup:-
+1. Go to aws console and search for RDS
+2.To create RDS instance click on databses and cilck on create database.
+3.To have all the options go with standard 
+4.Now select mySql(preffered) and after some   selection of some options  choose a proepr  name for it's instance.
+5.Select template dev/test and use single db instance.
+6.Give a proper name to db instance.
+7.In Credentials Settings look for self managed and set the password if you wish to.
+8. Select Burstable classes from DB instance class.
+9. In storage choose choose gp3 and keep the storage to 20 gb only.
+10.Once you create it will give you username and passwors (imp) and you have to save it for future references.

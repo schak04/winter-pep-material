@@ -1,5 +1,5 @@
 Please follow the given steps to open account on aws and access services(required):-
-
+---->
 1.Go to aws console(refers to web interface).
 2.Click on create account(with a new email to avoid payment related issues or you can simply abondon it later if such thing occurs).
 3.After filling details verify it.
@@ -26,7 +26,7 @@ Please follow the given steps to open account on aws and access services(require
 26.Once you create the user use the credentials to login and access other features.
 27.Now set MFA(Multi factor authentication) of it by clicking on  security credentials.
 28.Once you set logout with root user and login with IAM user and reset your password.
-29.Once done logout again and login with root user to set billing alarm to avaoid to use any paid services.
+29.Once done logout again and login with root user to set billing alarm(for root user) to avaoid to use any paid services.
 30.When you are ready with root user search for cloud watch to set alarm.
 31.Follow the cost and billing from the dropdown & go to billing prefrences.
 32.Go back to cloud watch and refresh the page & go to all alarm and create the alarm by selecting the metric.

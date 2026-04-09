@@ -1,0 +1,175 @@
+## 6. Bash Scripting
+
+Bash scripting is a way to automate tasks in Linux using a sequence of commands written in a file.
+
+--------------------------------------------------
+
+Q. What is Bash?
+-->
+Bash (Bourne Again Shell) is a command-line interpreter.
+
+It lets you:
+- Run commands
+- Automate repetitive tasks
+- Manage files, processes, system operations
+
+--------------------------------------------------
+
+Q. Why is Bash Important?
+-->
+- Used in DevOps, backend, and system administration
+- Automates repetitive tasks
+- Essential for Linux environments
+- Helps understand OS-level working
+--------------------------------------------------
+
+### Basic Script Structure
+
+#!/bin/bash
+
+echo "Hello World"
+
+Then you can save through commands :-       // to save "Hello World"
+Press Ctrl + O
+Press Enter
+Press Ctrl + X
+
+# Steps to run:
+# 1. Save file as script.sh
+# 2. Give permission:
+#    chmod +x script.sh
+# 3. Run:
+#    ./script.sh
+
+--------------------------------------------------
+
+### Variables
+
+name="Pratik"
+echo "My name is $name"
+
+# Rules:
+# - No space around '='
+# - Use $ to access variable value
+
+--------------------------------------------------
+
+### User Input
+
+echo "Enter your name:"
+read name
+echo "Hello $name"
+--------------------------------------------------
+
+### If Condition
+
+#!/bin/bash
+
+read -p "Enter username: " name
+
+if [ "$name" == "admin" ]; then
+    echo "Access Granted"
+else
+    echo "Access Denied"
+fi
+
+# Tip: Always use quotes to avoid errors
+
+--------------------------------------------------
+
+### Loops
+
+# For Loop
+for i in 1 2 3
+do
+    echo $i
+done
+
+---------------
+# 🔹 For Loop (Better Way)
+
+for i in {1..3}
+do
+    echo $i
+done
+
+Ex:--
+#!/bin/bash
+
+read -p "Enter a number: " n
+
+for ((i=1; i<=n; i++))
+do
+    echo $i
+done
+------------------------
+
+# While Loop
+count=1
+while [ $count -le 3 ]
+do
+    echo $count
+    ((count++))
+done
+
+--------------------------------------------------
+
+### Functions
+
+greet() {
+    echo "Hello $1"
+}
+
+greet Pratik
+
+--------------------------------------------------
+
+### Command Line Arguments
+
+echo "First argument: $1"
+echo "Second argument: $2"
+
+# Run as:
+# ./script.sh hello world
+
+--------------------------------------------------
+
+### File Check (Practical Example)
+
+if [ -f "test.txt" ]
+then
+    echo "File exists"
+else
+    echo "File not found"
+fi
+
+--------------------------------------------------
+
+### Real-World Example (Backup Script)
+
+#!/bin/bash
+
+echo "Backup started..."
+cp -r /home/vagrant/data /home/vagrant/backup
+echo "Backup completed!"
+
+--------------------------------------------------
+
+### Important Commands
+
+echo    # print output
+read    # take input
+chmod   # change permissions
+ls      # list files
+cd      # change directory
+pwd     # show current directory
+
+--------------------------------------------------
+
+### Summary
+
+- Bash is used for automation in Linux
+- Scripts help save time and reduce manual work
+- Important for DevOps and system administration
+
+--------------------------------------------------

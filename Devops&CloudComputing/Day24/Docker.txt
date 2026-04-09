@@ -1,0 +1,138 @@
+----------------------------------------------------------------------
+Docker architecture:-
+----------------------------------------------------------------------
+Main Components of Docker Architecture-->
+1.Docker Client
+Docker Client is the interface through which users interact with Docker.
+It allows you to:
+Run commands
+Build images
+Start/stop containers
+It communicates with the Docker Daemon (dockerd).
+
+Commands:
+```
+docker build
+docker run
+docker pull
+```
+----------------------------------------------
+2.Docker Daemon (dockerd)
+The brain of Docker.
+Docker Daemon is a background service that manages Docker objects like:
+Containers
+Images
+Networks
+Volumes
+It listens to requests from the Docker Client and performs the actual work.
+
+Functin:-
+Docker Client → sends request
+Docker Daemon:
+Checks image
+Pulls if needed
+Creates container
+Starts container
+Everything happens inside the daemon
+--------------------------------------------
+3.Docker Engine
+Docker Engine is the core runtime environment that builds, runs, and manages containers.
+It is the complete system that makes Docker work.
+Function:-
+when User runs the command
+CLI → sends request via REST API
+Docker Daemon:
+Pulls image (if needed)
+Creates container
+Starts container
+Output shown to user
+
+Key Responsibilities of Docker Engine:-
+Build Docker images
+Run containers
+Manage storage (volumes)
+Handle networking
+Communicate via API
+------------------------------------------------
+4.Docker Images
+A Docker Image is a read-only blueprint/template used to create containers.
+
+It contains everything needed to run an application:
+Code
+Runtime
+Libraries
+Dependencies
+Configuration
+Ex:-
+node:18
+nginx
+ubuntu
+
+Key Characteristics of Docker Images:-
+(a).Read-Only
+    Cannot be modified after creation
+    Changes are made by creating a new image 
+(b).Layered Structure
+Images are made of multiple layers
+Ex:-
+Base layer → OS (Ubuntu)
+Middle layer → Node.js
+Top layer → App code
+Each layer:
+Is cached
+Reused across images 
+
+(c).Lightweight 
+   Uses shared layers
+   Saves storage 
+
+---->Example Image:-
+     node:18
+     nginx
+    python:3.10
+ These are pre-built images from Docker Hub   
+--------------------------------------------------------
+5.Docker Containers
+A Docker Container is a running instance of a Docker Image.
+It is:
+Lightweight
+Isolated
+Executable
+
+It includes:
+App code
+Dependencies
+Runtime
+One image → Multiple containers possible
+
+**Container Lifecycle:-                         
+(a)Created
+(b)Running
+(c)Paused (optional)
+(d)Stopped
+(e)Deleted
+
+**Lifecycle Commands:-
+docker run nginx        # create + start
+docker ps               # running containers
+docker stop <id>        # stop
+docker start <id>       # restart
+docker pause <id>       # pause
+docker rm <id>          # delete
+----------------------------------------------------------
+6.Docker Registry (Docker Hub)
+Docker Registry is a storage system for Docker Images.
+It allows you to:-
+Store images
+Share images
+Download images
+Public or private
+Default: Docker Hub
+-->Docker Registry is like GitHub for Docker Images
+
+Operations:
+docker pull → download image
+docker push → upload image
+
+Note:-
+Docker follows a client-server architecture where the Docker client communicates with the Docker daemon to build, run, and manage containers.

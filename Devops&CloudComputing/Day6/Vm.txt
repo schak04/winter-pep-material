@@ -106,7 +106,8 @@ type ipconfig and for mac use ifconfig
 To set up vm automatically:- We need a tool called Vagrant
 We use this tool to manage virtual machines automatically.
 Vagrant solves many problem which being encountered while vm setup previously:-
-1.No Os installation 
+
+1.No Os installation - it setups vm images/box which are available on vagrant cloud
 2.Reduces time usage
 3.Avoids human error(while maual installation)
 4.For multiple vm installation manual way may be tough but while using Vagrant we can do easily.
@@ -117,29 +118,32 @@ for windows ------------------------> we use  git bash and
 for mac users----------------------->terminal
 
 Here you can follow the commnads to install vagrant on your local device:-
-1. look for present working directory.
+1. look for present working directory.command---->pwd
 2. use command mkdir ~/Desktop/vagrant-vms(optional, referred c drive)
-3.now go to current folder using cd vagrant-vms
+3.now go to current folder using command---> cd vagrant-vms
 4. create two folders Ex:- centos and ubuntu
 5.Go to centos
 6. You will be putting a file with command vagrant init and the box name(find the boxname from vagrant cloud) 
 follow this link:--> https://portal.cloud.hashicorp.com/vagrant/discover
-7. copy eurolinux-vagrant/centos-stream-9 and paste inside gitbash
+7. copy eurolinux-vagrant/centos-stream-9 and paste inside gitbash , you check it by typing  command--->ls
 8. to know the details of your file use cat Vagrant(if you have done any mistake while writing you can still modify it)
 9.You may get some error while installing (common because of antivirous/using any VPN/or corporate netwok)
-10.Now follow command vagrant up
+10.Now follow command---> vagrant up
 11. you can check the box list using vagrant box list /vagrant status or vagrant global-status --prune
-12. To login follow the command vagrant ssh and to check the user you can follow the command whoami to logout use exit
-13.To power off the vm use command  vagrant halt
-14. To reboot the vm use vagrant reload and to remove it use  vagrant destroy
+12. To login follow the command-----> vagrant ssh and to check the user you can follow the command-----> whoami to logout use command---> exit
+13.To power off the vm use command----->vagrant halt
+14. To reboot the vm use command--->vagrant reload and to remove it usecommand---->vagrant destroy
+
+To check all the boxes installed on your system you can use command---->vagrant box list
 
 For ubuntu:-->
 1.type ubuntu jammy on vagrant cloud
-2. follow the command -> vagrant init ubuntu/jammy64
-3.To switch to root user use sude -i, # exit to logout from root user and again exit to logout from vm
-4. you can check the status of all vms using -->vagrant global-status
-5. you check all previously executed commands using history
-
+2. follow the command ---> vagrant init ubuntu/jammy64
+3. Follow same commands as of previous ones
+4.To switch to root user use sudo -i,  exit to logout from root user and again exit to logout from vm
+5. you can check the status of all vms using -->vagrant global-status
+6. you check all previously executed commands using command---> history and you can also check with # ls(to list all the files and folders inside the directory)
+ 
 Note:- Always power off your vm first before powering off your computer.
 ----------------------------------------------------------------------------------------------------------
 Vm Setup for MacOs(Latest)

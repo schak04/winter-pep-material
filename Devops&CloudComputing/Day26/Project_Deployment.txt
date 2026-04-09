@@ -1,0 +1,22 @@
+Local project → Docker image → Docker container → EC2 server → live app
+
+GitHub = where code is stored
+Dockerfile = instructions to pack the app
+Docker image = packaged app
+Docker container = running app
+EC2 = remote machine/server on AWS
+Security Group = firewall that decides which ports are open
+---------------------------------------------------------------------------
+Phase 1 — Run project locally
+Before Docker, make sure project works normally.
+
+Steps:-
+Clone project from GitHub
+Run frontend locally
+Run backend locally
+Confirm API works
+Confirm frontend talks to backend
+Note:-If project does not work locally, Docker will not magically fix it
+----------------------------------------------------------------------------
+Phase 2 — Dockerize backend first
+Always start with backend first, because it is easier.

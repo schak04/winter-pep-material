@@ -1,0 +1,69 @@
+🐳 Docker
+------------------------------------------------------------------------------------------
+Q.What is container ?
+A container is a standard unit of software that packages up code and all its dependencies
+so the application runs quickly and reliably from one computing environment to another.
+
+A Docker container image is a lightweight, standalone, executable package that includes:
+.Code
+.Runtime
+.System tools
+.Libraries
+.Configuration
+Containers are isolated from each other but share the OS kernel.
+
+Q.What is docker?
+Docker is a containerization platform that allows you to:
+Package applications with dependencies
+Run them anywhere (local, server, cloud)
+
+Docker provides tools to:
+Build images
+Run containers
+Manage applications
+
+Q.What is Docker engine?
+Docker Engine is the core runtime that runs containers.
+
+It includes:
+Docker Daemon (dockerd) → runs in background
+Docker CLI → commands like docker run
+REST API → communication layer
+It is the main component that builds and runs containers.
+The main powerhouse of docker is it's images.
+
+Note:-
+You don’t need to build everything from scratch
+You can use pre-built images from Docker Hub
+You can customize them as needed
+-----------------------------------------------------------------------------------------
+Quiz:-
+Q. can i container run without docker?
+-----------------------------------------------------------------------------------------
+Q.Why Do We Need Docker?
+Before Docker:
+App works on my system ❌
+Fails on another system ❌
+Problem:-
+Dependency issues
+Environment mismatch
+
+With Docker:
+Consistent environment 
+Easy deployment 
+Build once, run anywhere.
+---------------------------------------------------------------------------------------
+Container vs VM:-
+
+Container → lightweight, shares OS, no reboot needed
+VM → heavy, full OS, requires reboot/boot time
+
+| Feature      | Container 🐳   | Virtual Machine 🖥️ |
+| ------------ | -------------- | ------------------- |
+| OS           | Shares host OS | Has its own OS      |
+| Size         | Lightweight    | Heavy               |
+| Startup Time | Seconds        | Minutes             |
+| Reboot       | ❌ Not required | ✅ Required          |
+| Performance  | Faster         | Slower              |
+
+Note:-Container runs like an app, VM runs like a full computer

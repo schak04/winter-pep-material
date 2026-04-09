@@ -1,0 +1,187 @@
+//DevOps tools mainly use JSON and YAML to exchange data.
+So,a DevOps engineer should know how to read and write these formats to share data between different applications and languages.
+--------------------------------------------------------------------------------
+**YAML**
+
+Q.What is YAML?
+-->
+It is a human-readable data serialization language used primarily for configuration files and data exchange between different programming languages.
+
+* YAML = *YAML Ain’t Markup Language*
+* Used in DevOps tools (Docker, Kubernetes, CI/CD)
+* Human-readable configuration format
+
+Key Characteristics of YAML:
+Human-Readable: It is designed to be easily read and written by humans.
+Indentation-Based: Like Python, it uses whitespace indentation to define structure and nesting.
+Data-Oriented: It excels at representing common data types like lists, associative arrays (maps), and scalars.
+Cross-Language: It is supported by most modern programming languages (JavaScript, Python, Java, etc.).
+
+Q. What does it mean Indentation ?
+--->Indentation means adding spaces at the beginning of a line to show structure or hierarchy (parent–child relationship)
+
+Ex:-person:
+     name: Pratik
+     age: 21
+
+Explanation:->person = parent
+name, age = children (because they are indented)
+---------------------------------------------------------------------------------
+
+## Rules:-
+Basic Rules for YAML in DevOps
+Indentation is Mandatory: Use spaces, not tabs. Each level of nesting must be consistently indented (usually 2 spaces).
+Case Sensitivity: Keys like Build and build are treated as different entities.
+Key-Value Pairs: Follow the format key: value, ensuring there is a space after the colon.
+List/Array Syntax: Use a hyphen followed by a space (- ) to denote items in a sequence or list.
+Comments: Use the hash symbol (#) for documentation; anything after the # is ignored by the parser.
+
+Note:-
+When you write a Docker Compose file or a Kubernetes Manifest, a single extra space can break your entire deployment.
+Most DevOps engineers use a "Linter" (a tool that checks for these rules) to ensure their YAML is valid before pushing it to production.
+Imp:--->“Most YAML errors happen because of spacing and indentation.”
+
+---
+
+## Example 1: Simple YAML
+
+```yaml
+name: Pratik
+age: 21
+city: Mumbai
+```
+How YAML interprets it-->
+name → "Pratik"   (string)
+age  → 21         (number)
+city → "Mumbai"   (string)
+
+Note:-Quotes are optional
+name: "Pratik"
+age: 21
+city: "Mumbai"
+
+---
+
+## Example 2: Nested YAML
+
+```yaml
+student:
+  name: Pratik
+  age: 21
+  skills:
+    - Python
+    - Bash
+    - DevOps
+```
+---
+
+## Important Points
+
+* Use **2 spaces** for indentation
+* Lists use `-`
+* No semicolons or brackets
+
+---
+
+## Common Mistake ❌
+
+```yaml
+student:
+name: Pratik   # WRONG (indentation missing)
+```
+
+---
+
+# JSON Structure
+
+## What is JSON?
+* JavaScript Object Notation
+* Used in APIs, configs, data exchange
+---
+## Rules
+* Uses `{}` for objects
+* Uses `[]` for arrays
+* Keys and strings must be in **double quotes**
+---
+## Example 1
+
+```json
+{
+  "name": "Pratik",
+  "age": 21,
+  "city": "Mumbai"
+}
+```
+---
+
+## Example 2: Nested JSON
+```json
+{
+  "student": {
+    "name": "Pratik",
+    "skills": ["Python", "Bash", "DevOps"]
+  }
+}
+```
+---
+
+## YAML vs JSON
+
+| Feature     | YAML           | JSON     |
+| ----------- | -------------- | -------- |
+| Readability | Easy           | Medium   |
+| Syntax      | Indentation    | Brackets |
+| Usage       | DevOps configs | APIs     |
+
+---
+
+#  3. Parsing JSON using jq
+
+Q. What is jq?
+* Command-line tool to process JSON
+
+//To install it you use "winget install jqlang.jq"---->windows users
+                         "brew install jq"----------->macos user
+
+//for yaml install "winget install mikefarah.yq" or "brew install yq"     
+to check the version use "jq --version" or "yq --version"               
+---
+
+## Sample JSON file (data.json)
+
+```json
+{
+  "name": "Pratik",
+  "age": 21,
+  "skills": ["Python", "Bash"]
+}
+```
+
+---
+
+## Basic Commands
+### 1. Print entire JSON
+
+```bash
+jq '.' data.json
+```
+
+### 2. Get specific field
+
+```bash
+jq '.name' data.json
+```
+
+### 3. Get array values
+
+```bash
+jq '.skills[]' data.json
+```
+
+### 4. Filter data
+
+```bash
+jq 'select(.age > 18)' data.json
+```
+
+---

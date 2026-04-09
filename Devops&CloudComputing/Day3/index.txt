@@ -242,7 +242,7 @@ Reasons to use Cloud:-
 //Difference Between DevOps and Cloud Computing
 DevOps focuses on HOW software is developed and deployed.
 Cloud Computing focuses on WHERE software is hosted and run.
-
+L
 Example:-
 • You build an application → Development
 • You automate testing & deployment → DevOps

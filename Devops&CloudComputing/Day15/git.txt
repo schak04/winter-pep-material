@@ -1,0 +1,198 @@
+## 1. Introduction to GitHub Copilot (for Automation)
+Git--->Distributed Version control system
+
+--> In DevOps:
+- Generate automation scripts
+- Write YAML configs (Ansible, Docker)
+- Help with debugging
+
+-->GitHub Copilot is an AI-powered coding assistant.
+
+--> It helps to:
+- Suggest code automatically
+- Generate scripts (Bash, Python, etc.)
+- Speed up development
+- Reduce manual effort
+
+> Think of Copilot as an AI pair programmer.
+--------------------------------------------------
+
+## 2. Git Architecture
+
+Git works in three main areas:
+
+1. Working Directory
+   → Where you write/edit code
+
+2. Staging Area (Index)
+   → Where changes are prepared before commit
+
+3. Repository (.git)
+   → Where commits are permanently stored
+
+Flow:
+Working Directory → Staging Area → Repository
+
+--------------------------------------------------
+
+## 3. Basic Git Commands
+
+### git init
+Initializes a new Git repository
+
+git init
+
+---
+
+### git add
+Adds files to staging area
+
+git add file.txt
+git add .
+
+---
+
+### git commit
+Saves changes to repository
+
+git commit -m "Initial commit"
+
+---
+
+### git push
+Uploads code to remote repository (GitHub/GitLab)
+
+git push origin main
+
+---
+
+### git pull
+Fetches and merges latest changes from remote
+
+git pull origin main
+
+--------------------------------------------------
+
+## 4. Branching Strategies
+
+### What is a branch?
+A branch is a separate line of development.
+
+---
+
+### GitFlow (Structured approach)
+
+- main → production code
+- develop → integration branch
+- feature → new features
+- release → pre-production
+- hotfix → urgent fixes
+
+--> Best for:
+Large teams, structured projects
+
+---
+
+### Trunk-Based Development
+
+- Single main branch (main/master)
+- Small, frequent commits
+- Short-lived branches
+
+--> Best for:
+Fast development, CI/CD pipelines
+
+--------------------------------------------------
+
+## 5. Rebase vs Merge
+
+### Merge
+
+git merge feature-branch
+
+- Combines branches
+- Keeps history intact
+- Creates merge commit
+
+--> Safe and simple
+
+---
+
+### Rebase
+
+git rebase main
+
+- Moves your branch on top of main
+- Creates cleaner history
+- No extra merge commits
+
+--> Cleaner but risky if misused
+
+---
+
+### Key Difference
+
+Merge → preserves history  
+Rebase → rewrites history  
+
+--------------------------------------------------
+
+## 6. Resolving Conflicts
+
+Conflict happens when:
+Two people change the same line of code
+
+Example:
+<<<<<<< HEAD
+code A
+=======
+code B
+>>>>>>> branch
+
+---
+
+### Steps to resolve:
+
+1. Open file
+2. Choose correct code
+3. Remove conflict markers
+4. Save file
+5. Run:
+
+git add file.txt
+git commit
+
+--------------------------------------------------
+
+## 7. GitHub / GitLab PR Workflow
+
+PR = Pull Request (GitHub)  
+MR = Merge Request (GitLab)
+
+---
+
+### Steps:
+
+1. Create branch
+   git checkout -b feature-branch
+
+2. Make changes and commit
+   git commit -m "Added feature"
+
+3. Push branch
+   git push origin feature-branch
+
+4. Create PR on GitHub/GitLab
+
+5. Code review happens
+
+6. Merge into main branch
+
+---
+
+### Why PR is important:
+
+- Code review
+- Collaboration
+- Better quality
+- Prevents bugs

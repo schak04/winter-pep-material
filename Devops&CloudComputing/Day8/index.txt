@@ -1,0 +1,34 @@
+## 2. Linux File System Hierarchy
+
+Linux follows a tree-like structure starting from the root directory (/).
+
+Important directories:
+/        - Root directory
+/bin     - Essential user commands
+/sbin    - System administration commands
+/etc     - Configuration files
+/home    - User home directories
+/root    - Root user home directory
+/var     - Log files and variable data
+/tmp     - Temporary files
+/usr     - User programs and utilities
+/dev     - Device files
+/proc    - Process information
+
+Everything in Linux is treated as a file.
+ 
+**Some basic commands used:-
+After logging in vm--->
+To check the user use command-->whoami,pwd,cat to read a file and we mention the file path
+To look for version of version type command--->cat etc/os-release
+To switch from vagrant user to root user type command--->sudo -i
+-->(only vagrant user can move to root user, you will go to home directory of root user)
+after useing command cd /---> you will be taken to root directory and  type command-->ls(will see all the files present inside it)
+type command-->cd(you will go to home directory of the user)
+follow the command---->cd /bin and to get the list of all files  and info use command--> # ls
+To see the configuration switch through command cd /etc/ and use command--->ls
+To create a directory(folder) we use command----> mkdir directory name and to create a file use command---->touch filename
+you can create multiple files in one go ,use command---> touch file1.txt file2.txt file3.txt or touch file{1..5}.txt
+To copy file use command cp file_name and source destination
+To copy directory to another location use command--->cp -r dir1 dir2/
+------------------------------------------------------------------------------

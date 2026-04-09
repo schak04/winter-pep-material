@@ -1,0 +1,161 @@
+## GitLab(Continue)
+--------------------------------------------------
+## Core DevSecOps Capabilities
+
+GitLab unifies Dev, Sec, and Ops in a single platform:
+- Enhances collaboration, automation, and compliance
+- Scales from startups to enterprises
+--------------------------------------------------
+
+## Source Code Management (SCM)
+
+- Git repository hosting & branching workflows
+- Merge Requests with approvals and comments
+- Web IDE & file editor
+- Wiki & code snippets
+- Protected branches/tags & Git LFS
+--------------------------------------------------
+## CI/CD (Continuous Integration & Deployment)
+
+- YAML-based pipelines (.gitlab-ci.yml)
+- Multi-stage jobs & pipeline visualization
+- Runners (shared or self-hosted)
+- Auto DevOps templates
+- Review apps & environment deployments
+- Kubernetes integration
+--------------------------------------------------
+## Security (DevSecOps)
+
+- SAST (Static Application Security Testing)
+- DAST (Dynamic Application Security Testing)
+- Dependency & container scanning
+- License compliance checks
+- Secret detection
+- Audit logs & compliance pipelines
+--------------------------------------------------
+## Monitoring & Analytics
+
+- Pipeline analytics & duration trends
+- Code quality reports
+- Application Performance Monitoring (APM)
+- Error tracking (Sentry integration)
+- Audit events & compliance reports
+--------------------------------------------------
+## Project & Team Management
+
+- Issues, milestones, iterations
+- Epics & roadmaps (Premium/Ultimate)
+- Kanban-style boards
+- Service Desk (customer support)
+- Requirement management
+--------------------------------------------------
+## Registry & Repositories
+
+- GitLab Container Registry (Docker)
+- Multi-language Package Registry (Maven, npm, PyPI, etc.)
+- Dependency proxy for caching
+- Build artifacts storage
+--------------------------------------------------
+## Integrations
+
+- Cloud: AWS, GCP, Azure, Kubernetes
+- Communication: Slack, Teams, Mattermost
+- Tools: Jira, Trello, Jenkins
+- Terraform remote state
+- APIs & Webhooks
+--------------------------------------------------
+## GitLab vs GitHub (Detailed Difference)
+
+Even though both provide similar features, the **approach is different**:
+
+GitLab:
+- All-in-one DevSecOps platform
+- Built-in CI/CD (no extra setup needed)
+- Built-in security scanning tools  ----------------->Important feature 
+- Single application for entire lifecycle (Dev + Sec + Ops)
+- Easier setup for complete pipeline
+
+GitHub:
+- Primarily code hosting platform
+- CI/CD via GitHub Actions (separate feature)
+- Security & DevOps via integrations/plugins
+- More flexible but depends on external tools
+- Strong open-source ecosystem & popularity
+
+👉 Key Point:
+Features may look similar, but  
+GitLab = Integrated platform  
+GitHub = Modular ecosystem
+--------------------------------------------------
+
+## Deployment Models (GitLab vs GitHub)
+
+### GitLab Deployment
+
+1. SaaS (Software as a Service)
+   - Hosted on gitlab.com
+   - No setup required
+   - Ready to use
+
+2. Self-Managed (Standalone)
+   - Installed on your own servers
+   - Full control over infrastructure & data
+   - Preferred by enterprises with strict security needs
+
+---
+
+### GitHub Deployment
+
+1. SaaS (Cloud - github.com)
+   - Most widely used version
+   - No setup required
+   - Ideal for individuals and teams
+
+2. Self-Hosted (GitHub Enterprise Server)
+   - Installed on company servers
+   - High security & control
+   - Used by large organizations
+
+---
+
+👉 Key Difference:
+- GitLab → Strong in both SaaS + Self-managed with DevOps integration  
+- GitHub → SaaS dominant with enterprise self-hosted option 
+--------------------------------------------------
+## Basic GitLab Workflow
+
+1. Create repository
+
+2. Clone repository
+   git clone <repo-url>
+
+3. Create branch
+   git checkout -b feature-branch
+
+4. Make changes and commit
+   git commit -m "Added feature"
+
+5. Push changes
+   git push origin feature-branch
+
+6. Create Merge Request (MR)
+
+7. Review and merge
+--------------------------------------------------
+## Important Terms
+
+- Repository → storage for code
+- Branch → separate development line
+- Merge Request (MR) → request to merge code
+- Pipeline → automated CI/CD process
+--------------------------------------------------
+## Summary
+
+GitLab is a complete DevSecOps platform that provides:
+- Source Code Management
+- CI/CD Automation
+- Security Testing
+- Project Management
+- Monitoring & Analytics
+
+All in one place (SaaS or self-managed), with Free, Premium, and Ultimate tiers.

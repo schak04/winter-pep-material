@@ -1,0 +1,69 @@
+## What is GitLab?
+
+GitLab is a web-based platform used for version control, collaboration, and DevOps.
+It is similar to GitHub, but provides a complete DevOps lifecycle in one place.
+--------------------------------------------------
+## Key Features of GitLab
+
+1. Version Control
+   - Uses Git to track code changes
+   - Helps manage project history
+
+2. Repository Hosting
+   - Stores your code online
+   - Supports private and public repositories
+
+3. Collaboration
+   - Multiple developers can work together
+   - Supports Merge Requests (MR)
+
+4. CI/CD (Continuous Integration & Deployment)
+   - Automates build, test, and deployment
+   - Uses .gitlab-ci.yml file
+
+5. Issue Tracking
+   - Manage bugs and tasks
+   - Assign work to team members
+
+6. Security & Monitoring
+   - Built-in security scanning
+   - Performance monitoring tools
+
+--------------------------------------------------
+## GitLab vs GitHub (Quick View)
+
+GitLab:
+- Built-in CI/CD
+- All-in-one DevOps platform
+
+GitHub:
+- More popular
+- Uses GitHub Actions for CI/CD
+--------------------------------------------------
+
+## Basic GitLab Workflow
+
+1. Create repository
+2. Clone repository
+   git clone <repo-url>
+
+3. Create branch
+   git checkout -b feature-branch
+
+4. Make changes and commit
+   git commit -m "Added feature"
+
+5. Push changes
+   git push origin feature-branch
+
+6. Create Merge Request (MR)
+
+7. Review and merge
+--------------------------------------------------
+
+## Important Terms
+
+- Repository → storage for code
+- Branch → separate development line
+- Merge Request (MR) → request to merge code
+- Pipeline → automated CI/CD process

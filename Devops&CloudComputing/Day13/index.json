@@ -1,0 +1,10 @@
+{
+    "name": "Pratik",
+    "age":22,
+    "hobbies": ["coding", "gaming", "traveling"],
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "country": "USA"
+    } 
+}

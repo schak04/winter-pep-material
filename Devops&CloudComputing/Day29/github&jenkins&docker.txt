@@ -1,0 +1,346 @@
+GitHub + Jenkins + Docker (Real CI/CD Flow)
+-------------------------------------------------
+1) What is the flow?
+
+Developer pushes code to GitHub
+        ↓
+GitHub notifies Jenkins
+        ↓
+Jenkins pulls latest code
+        ↓
+Jenkins builds Docker image
+        ↓
+Jenkins can run tests
+        ↓
+Jenkins can deploy to EC2 later
+
+Simple line:
+GitHub = source code
+Jenkins = automation
+Docker = packaging/running app
+-------------------------------------------------
+2) Do I need to create an account on Jenkins?
+
+Yes — but not a Jenkins website account.
+
+You only need to create the first admin user inside your own Jenkins setup when the setup wizard appears.
+Jenkins officially includes this first-admin-user step in its initial setup flow. :contentReference[oaicite:0]{index=0}
+
+So:
+- Jenkins website account = not needed
+- First admin user in your Jenkins UI = needed
+
+Example:
+username: admin
+password: your own password
+email: your email
+-------------------------------------------------
+3) Do I need to create an admin user on EC2 now?
+
+No, not now.
+
+For learning GitHub + Jenkins + Docker:
+- you can do everything locally first
+
+EC2 user is needed only when you want Jenkins to deploy to EC2.
+
+Also, on EC2 you usually do NOT create a Jenkins admin user.
+Jenkins admin user is inside Jenkins.
+EC2 user is a Linux server user such as:
+- ec2-user (Amazon Linux)
+- ubuntu (Ubuntu)
+
+So for now:
+- Jenkins admin user -> yes
+- EC2 admin/user setup -> later, only for deployment step
+-------------------------------------------------
+4) Important thing before webhook setup
+
+GitHub webhooks send events to a reachable server URL. GitHub documents webhooks as HTTP notifications sent to an external web server when events happen. :contentReference[oaicite:1]{index=1}
+
+This means:
+- if Jenkins is only on localhost, GitHub cannot reach it directly
+- localhost works only for you, not for GitHub
+
+So for local learning, you have 2 options:
+
+Option A: easiest for learning
+Use Jenkins "Poll SCM"
+Jenkins checks GitHub every few minutes
+
+Option B: real webhook flow
+Expose local Jenkins using:
+- ngrok
+- Cloudflare Tunnel
+- public server / EC2
+
+For now, start with Option A because it is simpler.
+-------------------------------------------------
+5) Plugins you should have in Jenkins
+
+Install these:
+- Git
+- GitHub
+- Pipeline
+- Docker Pipeline
+- Blue Ocean (optional, UI only)
+
+The GitHub plugin integrates Jenkins with GitHub, and Jenkins supports pipeline steps through Pipeline-compatible plugins. :contentReference[oaicite:2]{index=2}
+-------------------------------------------------
+6) Project files you need in your GitHub repo
+
+Your repo should contain:
+
+A) Dockerfile
+B) Jenkinsfile
+
+Example repo structure:
+my-app/
+  Dockerfile
+  Jenkinsfile
+  app files...
+-------------------------------------------------
+7) Example Dockerfile
+
+Use this if your app is a Node app:
+
+FROM node:20
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+
+What it does:
+- takes Node image
+- copies project
+- installs dependencies
+- starts app
+-------------------------------------------------
+8) Example Jenkinsfile
+
+Use this simple Jenkinsfile:
+
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "my-app"
+        IMAGE_TAG = "latest"
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t %IMAGE_NAME%:%IMAGE_TAG% .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                bat 'docker rm -f my-app-container || exit 0'
+                bat 'docker run -d --name my-app-container -p 3000:3000 %IMAGE_NAME%:%IMAGE_TAG%'
+            }
+        }
+    }
+}
+
+Important:
+- this uses bat because you are learning on Windows
+- replace:
+  - YOUR_GITHUB_USERNAME
+  - YOUR_REPO_NAME
+
+If your branch is master, replace main with master.
+-------------------------------------------------
+9) How to connect GitHub repo to Jenkins
+
+Step 1:
+Push your code to GitHub
+
+Step 2:
+Open Jenkins
+Login with the admin user you created
+
+Step 3:
+Click "New Item"
+
+Step 4:
+Enter job name
+Example: my-app-pipeline
+
+Step 5:
+Select "Pipeline"
+
+Step 6:
+Open job configuration
+
+Step 7:
+In Pipeline section choose:
+"Pipeline script from SCM"
+
+Step 8:
+SCM = Git
+
+Step 9:
+Repository URL:
+https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
+
+Step 10:
+Branch Specifier:
+*/main
+
+Step 11:
+Script Path:
+Jenkinsfile
+
+Step 12:
+Save
+
+Now Jenkins knows:
+- where your code is
+- which branch to read
+- which Jenkinsfile to run
+-------------------------------------------------
+10) How Jenkins will trigger builds
+
+For learning now:
+Use Poll SCM
+
+In job configuration:
+Build Triggers
+tick:
+Poll SCM
+
+Use this schedule:
+H/2 * * * *
+
+Meaning:
+Jenkins checks GitHub every 2 minutes approximately.
+
+This is easier than webhook when Jenkins is on localhost.
+-------------------------------------------------
+11) If you want real webhook flow later
+
+After Jenkins becomes publicly reachable:
+- open GitHub repo
+- go to Settings
+- Webhooks
+- Add webhook
+
+Payload URL:
+http://YOUR_PUBLIC_JENKINS_URL/github-webhook/
+
+Content type:
+application/json
+
+Event:
+Just the push event
+
+GitHub documents webhook delivery and recommends using a secret token for validation. :contentReference[oaicite:3]{index=3}
+
+Note:
+Do this only after Jenkins has a public URL.
+Do not use localhost there.
+-------------------------------------------------
+12) How to test the flow
+
+Step 1:
+Make a small code change
+
+Step 2:
+Push to GitHub
+
+Step 3:
+Jenkins detects change
+(or webhook triggers build later when public URL is ready)
+
+Step 4:
+Jenkins stages run:
+- checkout
+- docker build
+- run container
+
+Step 5:
+Open browser:
+http://localhost:3000
+
+If app opens, your CI/CD flow is working.
+-------------------------------------------------
+13) Where Docker fits here
+
+GitHub stores code
+Jenkins automates steps
+Docker packages and runs the app
+
+Without Docker:
+Jenkins builds directly on machine
+
+With Docker:
+same app can run in a consistent environment
+-------------------------------------------------
+14) Your learning order
+
+Follow this order:
+
+1. Complete Jenkins setup
+2. Create first admin user in Jenkins
+3. Install plugins
+4. Create GitHub repo with Dockerfile + Jenkinsfile
+5. Create Jenkins pipeline job
+6. Run build manually once
+7. Add Poll SCM
+8. Test by pushing code
+9. Later expose Jenkins publicly
+10. Then add GitHub webhook
+11. Finally connect EC2 deployment
+-------------------------------------------------
+15) Best answer to your current doubt
+
+Right now you should do this:
+- Yes, create the first admin user in Jenkins
+- No need to create anything on EC2 yet
+- First learn local GitHub + Jenkins + Docker build flow
+- Deploy to EC2 later as next step
+
+-------------------------------------------------
+16) One-line explanation for class
+
+"When code is pushed to GitHub, Jenkins automatically pulls it, builds a Docker image, and runs the application."
+-------------------------------------------------
+17) Very small checklist
+
+Before starting, make sure:
+- Docker Desktop is running
+- Jenkins container is running
+- You created Jenkins admin user
+- GitHub repo exists
+- Dockerfile exists in repo
+- Jenkinsfile exists in repo
+-------------------------------------------------
+18) If build fails, check these first
+
+- wrong GitHub repo URL
+- wrong branch name
+- Docker Desktop not running
+- Docker not accessible from Jenkins
+- Dockerfile not in repo root
+- Jenkinsfile not in repo root
+-------------------------------------------------
+19) Recommended next practical step
+
+First do:
+manual build from Jenkins
+
+Then do:
+automatic trigger using Poll SCM
+
+Then later do:
+real webhook + EC2 deployment

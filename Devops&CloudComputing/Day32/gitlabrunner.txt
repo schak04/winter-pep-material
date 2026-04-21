@@ -1,0 +1,199 @@
+## GitLab – DevOps Platform
+-----------------------------------------------------
+GitLab is an all-in-one DevOps platform that provides:
+
+* Git Repository (like GitHub)
+* CI/CD Pipelines
+* Issue Tracking
+* DevOps tools (Planning → Coding → Testing → Deployment)
+
+In Simple Terms:
+GitLab CI/CD automatically builds, tests, and deploys code using pipelines made of stages and jobs.
+----------------------------------------------------
+8. GitLab CI Basics
+----------------------------------------------------
+GitLab CI is used to automate build, test, and deployment.
+Configuration file:
+.gitlab-ci.yml
+
+Core Concepts:
+* Stages → Pipeline phases (Build → Test → Deploy)
+* Jobs → Tasks inside each stage
+
+Ex:-
+stages:
+
+* build
+* test
+* deploy
+
+build-job:
+stage: build
+script:
+- echo "Building..."
+
+test-job:
+stage: test
+script:
+- echo "Testing..."
+
+deploy-job:
+stage: deploy
+script:
+- echo "Deploying..."
+
+Execution Flow:
+Stage 1 → All jobs run
+Stage 2 → Runs only if Stage 1 succeeds
+Stage 3 → Runs only if Stage 2 succeeds
+
+In Simple Terms:
+Stages = Pipeline flow
+Jobs = Work inside each stage
+-----------------------------------------------
+9. GitLab Runners
+----------------------------------------------
+Runner = Machine that executes CI jobs
+
+Types:
+* Shared Runner → Provided by GitLab
+* Specific Runner → Self-hosted (own server)
+
+Important:
+* Runner pulls job from GitLab
+* Executes script commands
+* Sends result back
+
+In Simple Terms:
+“Runner = Worker that runs your pipeline code”
+----------------------------------------------
+10. GitLab Secrets (Variables)
+---------------------------------------------
+Used to store sensitive data (API keys, passwords)
+Location:
+GitLab → Settings → CI/CD → Variables
+
+Usage:-
+script:
+* echo $MY_SECRET
+
+Best Practice:-
+* Never hardcode secrets in YAML
+* Use protected variables
+
+In Simple Terms:
+“Secrets = Hidden values used securely in pipeline”
+---------------------------------------------------
+11. GitLab Advanced Concepts (IMPORTANT FOR STUDENTS)
+----------------------------------------------------
+1. only / except (or rules)
+   Controls when jobs run
+
+Example:
+only:
+* main
+Meaning:
+Run job only when code is pushed to main branch
+----------------------------------------------------
+2. Artifacts
+   Used to pass files between jobs
+
+Example:
+artifacts:
+paths:
+- build/
+
+Meaning:
+Output of build stage can be used in test stage
+-----------------------------------------------------
+3. Cache
+   Used to speed up pipeline
+
+Example:
+cache:
+paths:
+- node_modules/
+
+Meaning:
+Dependencies don’t need to be installed again
+---------------------------------------------------
+4. Dependencies (Job Order Control)
+   Define which job depends on which
+
+Example:
+dependencies:
+
+* build-job
+---------------------------------------------------
+5. before_script / after_script
+   Common commands for all jobs
+
+Ex:-
+before_script:
+* npm install
+---------------------------------------------------
+6. Failure Handling
+   Pipeline stops if a job fails
+
+Optional:
+allow_failure: true
+---------------------------------------------------
+12. Full GitHub Workflow Example
+---------------------------------------------------
+name: Node CI
+
+on:
+push:
+branches: [ "main" ]
+
+jobs:
+build:
+runs-on: ubuntu-latest
+````````````````````````````````````````````````
+strategy:
+  matrix:
+    node-version: [16, 18]
+
+steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-node@v3
+    with:
+      node-version: ${{ matrix.node-version }}
+  - run: npm install
+  - run: npm test
+`````````````````````````````````````````` 
+Key Concepts:
+
+* Workflow → Entire pipeline
+* Job → Group of steps
+* Step → Single command
+* Matrix → Multiple environments
+-----------------------------------------
+13. Full GitLab CI Example
+-----------------------------------------
+stages:
+
+* build
+* test
+
+build-job:
+stage: build
+script:
+- npm install
+
+test-job:
+stage: test
+script:
+- npm test
+------------------------------------------
+14. Key Differences (GitHub vs GitLab)
+------------------------------------------
+GitHub Actions:
+* Uses Workflows → Jobs → Steps
+* YAML inside .github/workflows/
+* Matrix support is strong
+
+GitLab CI:
+* Uses Stages → Jobs
+* Single file .gitlab-ci.yml
+* More structured pipeline flow

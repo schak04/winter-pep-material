@@ -1,0 +1,77 @@
+Jenkins Pipeline: Declarative vs Groovy (Scripted)
+--------------------------------------------------
+Example Task:
+Build + Test + Deploy
+--------------------------------------------------
+1. Declarative Pipeline (Easy & Structured)
+--------------------------------------------------
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
+}
+--------------------------------------------------
+Explanation (Declarative)
+
+- pipeline {} → Defines the whole pipeline
+- agent any → Run on any available machine
+- stages {} → Group of all stages
+- stage('Name') → Each step like Build/Test/Deploy
+- steps {} → Actual commands
+
+ Easy to read, fixed structure
+--------------------------------------------------
+2. Groovy (Scripted Pipeline)
+--------------------------------------------------
+
+node {
+    stage('Build') {
+        echo 'Building the project...'
+    }
+
+    stage('Test') {
+        echo 'Running tests...'
+    }
+
+    stage('Deploy') {
+        echo 'Deploying application...'
+    }
+}
+--------------------------------------------------
+Explanation (Groovy)
+
+- node {} → Defines where pipeline runs
+- stage('Name') → Same as declarative
+- echo → Print message
+
+ More flexible, less structure
+--------------------------------------------------
+3. Key Difference (Same Example)
+
+Declarative:
+- Structured (pipeline → stages → steps)
+- Beginner-friendly
+- Less chance of mistakes
+
+Groovy:
+- Free-style coding
+- More control (can add loops, conditions, logic)
+- Slightly harder to learn

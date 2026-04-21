@@ -1,0 +1,66 @@
+Groovy vs Declarative Syntax in Jenkins
+---------------------------------------
+1. What is Groovy?
+
+Groovy is a programming language (runs on Java).
+
+In Jenkins:
+Groovy is used to write pipeline scripts with full logic and flexibility.
+
+You can use:
+- loops (for, while)
+- conditions (if/else)
+- variables
+- functions
+
+ In simple terms:
+“Groovy = Coding way to write Jenkins pipelines (more control, more complex)”
+-------------------------------------------------------
+2. What is Declarative Syntax?
+
+Declarative syntax is a simpler and structured way to write Jenkins pipelines.
+
+It follows a fixed format.
+
+Main structure:
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+    }
+}
+
+ In simple terms:
+“Declarative = Easy, structured, beginner-friendly pipeline format”
+-------------------------------------------------------
+3. Key Difference
+
+| Feature        | Groovy (Scripted Pipeline) | Declarative Pipeline |
+|---------------|---------------------------|----------------------|
+| Style         | Coding style              | Structured format    |
+| Complexity    | More complex              | Easy to read         |
+| Flexibility   | Very high                 | Limited but enough   |
+| Best for      | Advanced users            | Beginners / standard pipelines |
+
+-------------------------------------------------------
+4. Quick Analogy
+
+Groovy (Scripted)  → Writing full program yourself  
+Declarative        → Filling a predefined template  
+
+-------------------------------------------------------
+5. When to Use
+
+Use Declarative:
+- When starting with Jenkins
+- For simple pipelines
+- For clean and readable code
+
+Use Groovy:
+- When you need complex logic
+- Dynamic pipelines
+- Advanced customization

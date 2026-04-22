@@ -1,0 +1,166 @@
+------------------------------------------------------------
+2. FILE HANDLING (VERY IMPORTANT)
+------------------------------------------------------------
+Definition:
+File handling is used to read/write files from system.
+
+Types:
+- Read (r)
+- Write (w)
+- Append (a)
+
+Example: Reading File
+
+file = open("data.txt", "r")
+content = file.read()
+print(content)
+file.close()
+
+Better Way (recommended):
+
+with open("data.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+Writing File:
+with open("data.txt", "w") as file:
+    file.write("Hello World")
+
+Appending File:
+
+with open("data.txt", "a") as file:
+    file.write("\nNew Line")
+
+Use Case:
+- Logs storing
+- Config files
+- Data processing
+------------------------------------------------------------
+3. LOGGING (IMPORTANT FOR REAL PROJECTS)
+------------------------------------------------------------
+Q.What is Logging (in simple terms)?
+Logging means recording what your program is doing while it runs.
+Instead of just showing output on screen, we store it permanently.
+
+Ex:-
+Think of logging like:
+ CCTV camera + register book
+
+CCTV = watches everything (program activity)
+Register = stores everything (log file)
+So later, if something goes wrong → you can check logs.
+
+Definition:
+Logging is used to track events/errors in application.
+
+Why not print?
+- print is temporary
+- logging is permanent + structured
+
+Problems when we sue print:-
+Disappears after program ends
+Cannot categorize messages
+Not saved anywhere
+Not useful in real systems
+
+Q.Why Logging is better?
+ Stores messages in file
+ Shows time of event
+ Categorizes messages (INFO, ERROR, etc.)
+ Helps debugging in production
+
+Example:
+BASIC LOGGING:---->
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+logging.info("App started")
+logging.warning("Low memory")
+logging.error("Something failed")
+
+Output:-
+INFO:root:App started
+WARNING:root:Low memory
+ERROR:root:Something failed
+
+LOGGING LEVELS:-
+Think of levels like priority/severity
+| Level    | Meaning                        |
+| -------- | ------------------------------ |
+| DEBUG    | Detailed info (for developers) |
+| INFO     | Normal activity                |
+| WARNING  | Something unusual              |
+| ERROR    | Something failed               |
+| CRITICAL | System crash                   |
+
+Ex:-
+logging.debug("Value of x is 10")
+logging.info("User logged in")
+logging.warning("Disk space low")
+logging.error("File not found")
+logging.critical("Server crashed")
+
+DEBUG → developer check
+INFO → normal logs
+ERROR → something broke
+
+Ex2:-LOGGING TO FILE 
+
+import logging
+logging.basicConfig(
+    filename="app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logging.info("App started")
+logging.error("Error occurred")
+
+Output in file (app.log):-
+2026-04-21 10:00:00 - INFO - App started
+2026-04-21 10:01:00 - ERROR - Error occurred
+
+Format Explanation
+"%(asctime)s - %(levelname)s - %(message)s"
+
+| Part      | Meaning        |
+| --------- | -------------- |
+| asctime   | Time of log    |
+| levelname | INFO / ERROR   |
+| message   | Actual message |
+------------------------------------------------------------
+4. REST APIs (VERY IMPORTANT)
+------------------------------------------------------------
+Definition:
+REST API allows communication between systems using HTTP.
+
+Methods:
+- GET → fetch data
+- POST → send data
+- PUT → update
+- DELETE → remove
+
+Python Library: requests
+
+Install:
+pip install requests
+
+Example: GET Request
+
+import requests
+
+response = requests.get("https://api.github.com")
+print(response.status_code)
+print(response.json())
+
+POST Request:
+
+data = {"name": "Pratik"}
+
+response = requests.post("https://example.com/api", json=data)
+print(response.status_code)
+
+Use Case:
+- Calling external services
+- Fetching data from APIs
+- Automation scripts

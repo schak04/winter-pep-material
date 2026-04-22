@@ -1,0 +1,3 @@
+Hello World
+New Line
+ This is devops and cloud computing class
